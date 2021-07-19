@@ -1,0 +1,18 @@
+#container {
+    .title_main {
+        display: flex; 
+        justify-content: space-between;
+        padding: 2vw;
+        background-color: #9933cc;
+        color: white;
+        align-items: center;
+        height: 16vh;
+
+        img {
+            width: 10%;
+            border-radius: 50%;
+        }
+    }
+
+    
+}

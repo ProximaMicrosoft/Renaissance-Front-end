@@ -1,0 +1,13 @@
+#content {
+    display: block;   
+
+    form {
+        input::-webkit-calendar-picker-indicator{
+            display: none;
+        }
+
+        .calendar {
+            display: none;
+        }
+    }
+}

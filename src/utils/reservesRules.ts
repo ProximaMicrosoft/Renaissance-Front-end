@@ -1,0 +1,71 @@
+export const rules = [ {
+    idLocal: 1,
+    nameLocal: "Academia",
+    inicialHour: 5,
+    finalHour: 23,
+    reservesLimit: 2,
+    allDay: false
+}, {
+    idLocal: 2,
+    nameLocal: "Piscina",
+    inicialHour: 6,
+    finalHour: 22,
+    reservesLimit: 3,
+    allDay: false
+}, {
+    idLocal: 3,
+    nameLocal: "Brinquedoteca",
+    inicialHour: 7,
+    finalHour: 22,
+    reservesLimit: 1,
+    allDay: false,
+}, {
+    idLocal: 4,
+    nameLocal: "Campinho",
+    inicialHour: 7,
+    finalHour: 22,
+    reservesLimit: 1,
+    allDay: false
+}, {
+    idLocal: 5,
+    nameLocal: "Quadra",
+    inicialHour: 7,
+    finalHour: 22,
+    reservesLimit: 1,
+    allDay: false
+}, {
+    idLocal: 6,
+    nameLocal: "Salão de Jogos",
+    inicialHour: 6,
+    finalHour: 23,
+    reservesLimit: 1,
+    allDay: false
+}, {
+    idLocal: 7,
+    nameLocal: "Deck",
+    inicialHour: 8,
+    finalHour: 22,
+    reservesLimit: 1,
+    allDay: true
+}, {
+    idLocal: 8,
+    nameLocal: "Salões de festas A",
+    inicialHour: 8,
+    finalHour: 23,
+    reservesLimit: 1,
+    allDay: true
+}, {
+    idLocal: 9,
+    nameLocal: "Salões de festas B",
+    inicialHour: 8,
+    finalHour: 23,
+    reservesLimit: 1,
+    allDay: true
+}, {
+    idLocal: 10,
+    nameLocal: "Salões de festas C",
+    inicialHour: 8,
+    finalHour: 23,
+    reservesLimit: 1,
+    allDay: true
+} ]
