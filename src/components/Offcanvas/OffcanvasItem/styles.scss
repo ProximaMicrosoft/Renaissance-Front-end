@@ -1,0 +1,29 @@
+#item-button {
+    width: 100%;
+    padding: 3vw 5vw;
+    transition: background-color 200ms;
+
+    &:hover {
+        background-color: #177fac;
+    }
+
+    #content-button {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        
+        h3 {
+            margin: 0;
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: white;
+        }
+    
+        img {
+            height: 5vw;
+            margin-left: 10%;
+        }
+    }
+
+    
+}

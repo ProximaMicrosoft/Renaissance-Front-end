@@ -1,29 +1,26 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { PublicRoute } from "./components/CustomRoutes";
+// import { PublicRoute } from "./components/CustomRoutes";
 
+import { useAuth } from "./hooks/useAuth";
+
+import { AdminRoutes } from "./routes/AdminRoutes";
+import { ClientRoutes } from "./routes/ClientRoutes";
 import { Login } from "./pages/Login";
 import { PageNotFound } from "./pages/NotFound";
-import { adminRoutes } from "./routes/AdminRoutes";
-import { clientRoutes } from "./routes/ClientRoutes";
+import { MenuContextProvider } from "./contexts/menuContext";
 
 export function Routes() {
-    function checkRole() {
-        const user: UserProps = JSON.parse(localStorage.getItem('userData') || '[]');
-        
-        if(user.role === "ADMIN") {
-            return adminRoutes;
-        } else {
-            return clientRoutes;
-        }
-    }
+    const context = useAuth();
 
     return(
         <BrowserRouter>
             <Switch>
-                <PublicRoute exact path="/" component={Login}/>
+                <Route exact path="/" component={Login}/>
 
-                {checkRole()}
+                <MenuContextProvider>
+                    {context?.user?.role === 'ADMI' ? <AdminRoutes /> : <ClientRoutes />}
+                </MenuContextProvider>
 
                 <Route path="/" component={PageNotFound} />
             </Switch>

@@ -1,18 +1,48 @@
-#container {
-    .title_main {
-        display: flex; 
-        justify-content: space-between;
-        padding: 2vw;
-        background-color: #9933cc;
-        color: white;
-        align-items: center;
-        height: 16vh;
+@import '../../../styles/mixins.scss';
 
-        img {
-            width: 10%;
-            border-radius: 50%;
+#container {
+    display: flex;
+    width: 100%;
+    position: relative; //mudar p/ fixed 
+    flex-direction: column;
+
+    header {
+        background-color: #1EACE8;
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        height: 18vh;
+        box-shadow: 0 -5px 10px black;
+
+        #nav-icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 3vw 5vw;
+
+            img {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        #title {
+            @include centralizeContent();
+            padding: 3vw 5vw;
+
+            h5 {
+                color: white;
+                font-weight: 400;
+            }
         }
     }
 
-    
+    main {
+        padding: 8vw 5vw;
+        max-height: 82vh;
+        overflow-y: scroll;
+    }
 }

@@ -1,0 +1,48 @@
+#offcanvasContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: #1EACE8;
+    width: 100%;
+    height: 100%;
+
+
+    header {
+        display: flex;
+        justify-content: flex-end;
+        height: 9%;
+
+        #header-content {
+            width: 100%;
+            padding: 3vw 5vw;
+
+            #button-content {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                h3 {
+                    margin: 0;
+                    font-weight: 400;
+                    font-size: 1.2rem;
+                    color: white;
+                }
+            
+                img {
+                    border-radius: 3vw;
+                    cursor: pointer;
+                    height: 5vw;
+                    margin-left: 10%;
+                }
+            }
+        }
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 50%;
+    }
+}

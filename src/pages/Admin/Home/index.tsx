@@ -1,7 +1,7 @@
-import { ButtonNavigation } from '../../../components/ButtonNavigation';
+import { ButtonNavigation } from '../../../components/ButtonNavigation/ButtonNavigation';
 import './styles.scss';
 
-
+ 
 export function AdminHome() {   
     return(
         <div id="container">

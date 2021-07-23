@@ -1,28 +1,59 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+
+import { Link } from '../../components/Link/Link';
 
 import { AxiosResponse } from 'axios';
+import { Spinner } from 'react-bootstrap';
+
 import { api } from '../../services/api';
-import { login } from '../../services/auth';
+
+import logoImg from '../../assets/logo.svg';
+import eye from '../../assets/eye-outline.svg';
+import eyeClosed from '../../assets/eye-off-outline.svg';
+
 import './styles.scss';
+
 
 export function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [check, setCheck] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
 
     const history = useHistory();
-    
+    const context = useAuth();
+
+    //verifica se o usuário já estava logado
+    useEffect(() => {
+        if(localStorage.getItem('userData') !== null) { 
+            const user = localStorage.getItem('userData')
+
+            typeof(user) === 'string' && context?.setUser(JSON.parse(user))
+
+            history.push('/home')
+        }
+        // eslint-disable-next-line
+    }, [])
+
     async function handleLogin(e: FormEvent) {
         e.preventDefault();
-
+        setLoading(true);
         const loginResponse: AxiosResponse<LoginResponse> = await api.post('/login', {
             email,
             password
         })
+        setLoading(false);
+        if(loginResponse.status === 200) {
+            context?.setUser(loginResponse.data.user);
 
-        if(loginResponse.status === 200) { 
-            // login(loginResponse.data.user.token, loginResponse.data.user);
-            login('token temporário', loginResponse.data.user);
+            if(check) 
+                localStorage.setItem("userData", JSON.stringify(loginResponse.data.user))
+            
+            
             history.push('/home');
         } else {
             alert('Credenciais incorretas, digite novamente ou entre em contato com o administrador.')
@@ -31,44 +62,84 @@ export function Login() {
 
     return(
         <div id="content">
-            <div className="title_login">
-                <h3>Renaissance</h3>
-                <h1>Login</h1>
+            <div id="title_login">
+                <img src={logoImg} alt="Renaissance Logo" />
+                <h3>RENAISSANCE</h3>
             </div>
 
             <form onSubmit={handleLogin}>
-                <div id="formContent">
-                    <fieldset>
-                        <h4>Email</h4>
-                        <input 
+                <div id="content-top">
+                    <input 
                         required
                         type="email" 
                         name="email" 
                         id="email" 
+                        placeholder="Digite seu email"
                         value={email}
-                        onChange={e => setEmail(e.currentTarget.value)}/>
-                    </fieldset>
-
+                        onChange={e => setEmail(e.currentTarget.value)}
+                    />
+                    
                     <fieldset>
-                        <h4>Senha</h4>
                         <input 
-                        required
-                        type="password" 
-                        name="password" 
-                        id="password" 
-                        value={password}
-                        onChange={e => setPassword(e.currentTarget.value)}/>
+                            required
+                            type={showPassword ? 'text' : 'password'}
+                            name="password" 
+                            id="password" 
+                            autoComplete="current-password"
+                            placeholder="Digite sua senha"
+                            value={password}
+                            onChange={e => setPassword(e.currentTarget.value)}
+                        />
+                        
+                        <div id="showPassword">
+                            <img 
+                                src={showPassword ? eye : eyeClosed} 
+                                alt="Mostrar/ocultar senha" 
+                                onClick={() => setShowPassword(showPassword ? false : true)}
+                            />
+                        </div>
                     </fieldset>
-
-                    <div id="continueConnected">
-                        <input type="checkbox" name="connected" id="connected" />
-                        Continuar conectado
-                    </div>
                     
 
-                    <input type="submit" id="submit" value="Entrar" />
+                    <div id="continueConnected">
+                        <div>
+                            <input 
+                                type="checkbox" 
+                                checked={check} 
+                                onChange={() => setCheck(check ? false : true)} 
+                                name="connected" 
+                                id="connected" 
+                            />
+                        </div>
+                        Manter-me conectado neste dispositivo
+                    </div>
+                </div>
+                
+                <div id="content-bottom">
+                    <button 
+                    type="submit" 
+                    id="submit" >
+                        {loading ? <Spinner animation="border" variant="light" /> : 'Entrar'}
+                    </button>
+
+                    <div id="actions">
+                        <Link to="/a">
+                            Esqueci minha senha
+                        </Link>
+
+                        <div>
+                            <p>
+                                Não possui cadastro? 
+                            </p>
+                            <Link to="/">
+                                Clique Aqui
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </form>
+
+            
         </div>
     );
 }

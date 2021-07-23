@@ -1,14 +1,10 @@
 import { Redirect, Route } from "react-router-dom";
-import { isAuthenticated } from "../services/auth";
+import { useAuth } from "../hooks/useAuth";
 
 export function PrivateRoute({...props}) {
-	return(
-		isAuthenticated ? <Route {...props} /> :  <Redirect to="/"/>
-	);
-}
+    const context = useAuth();
 
-export function PublicRoute({...props}) {
-    return(
-        isAuthenticated ? <Redirect to="/home"/> : <Route {...props} />
-    );
+	return(
+		context?.user ? <Route {...props} /> :  <Redirect to="/"/>
+	);
 }

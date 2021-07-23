@@ -1,0 +1,11 @@
+button {
+    background-color: transparent;
+    border: 0;
+    display: block;
+    width: fit-content;
+    color: #1EACE8;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
