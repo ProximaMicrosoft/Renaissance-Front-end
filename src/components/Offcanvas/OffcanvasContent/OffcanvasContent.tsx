@@ -11,6 +11,7 @@ import out from '../../../assets/out.svg';
 import './styles.scss';
 import { useMenu } from '../../../hooks/useMenu';
 import { Link } from 'react-router-dom';
+import { logout } from '../../../services/loginLogout';
 
 export function OffcanvasContent() {
     const menuContext = useMenu();
@@ -50,7 +51,8 @@ export function OffcanvasContent() {
                     <OffcanvasItem title="Documentos" src={documents}/>
                 </Link>
             </main>
-            <footer>
+
+            <footer onClick={() => logout() }>
                 <OffcanvasItem title="Sair" src={out}/>
             </footer>
         </div> 

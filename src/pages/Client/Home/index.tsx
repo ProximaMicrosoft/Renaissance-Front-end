@@ -22,7 +22,7 @@ export function Home() {
         <div id="container">
             <header>
                 <div id="nav-icons">
-                    <img src={returnIcon} alt="Retornar para a página anterior" />
+                    <img src={returnIcon} hidden alt="Retornar para a página anterior" />
                     <img src={hamburguerIcon} alt="abrir menu  lateral" 
                     id="hamburguer" onClick={() => menuContext.setShow(true)}
                     />
@@ -41,12 +41,6 @@ export function Home() {
                 <ButtonNavigation image={icon} title="Achados e Perdidos" path="/lostandfound"/>
 
                 <ButtonNavigation image={icon} title="Regras do condomínio" path="/rules"/>
-
-                <ButtonNavigation image={icon} title="Meus dados" path="/mydata"/>
-
-                <ButtonNavigation image={icon} title="Minhas reservas" path="/myreserves"/>
-
-                <ButtonNavigation image={icon} title="Minhas visitas" path="/myvisitors"/>
             </main> 
  
             <Offcanvas show={menuContext.show} onHide={() => menuContext.setShow(false)} placement="end">

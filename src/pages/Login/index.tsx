@@ -70,7 +70,6 @@ export function Login() {
             <form onSubmit={handleLogin}>
                 <div id="content-top">
                     <input 
-                        required
                         type="email" 
                         name="email" 
                         id="email" 
@@ -81,7 +80,6 @@ export function Login() {
                     
                     <fieldset>
                         <input 
-                            required
                             type={showPassword ? 'text' : 'password'}
                             name="password" 
                             id="password" 
