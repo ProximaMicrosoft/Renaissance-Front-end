@@ -19,7 +19,7 @@ export function Routes() {
                 <Route exact path="/" component={Login}/>
 
                 <MenuContextProvider>
-                    {context?.user?.role === 'ADMI' ? <AdminRoutes /> : <ClientRoutes />}
+                    {context?.user?.role === 'ADMIN' ? <AdminRoutes /> : <ClientRoutes />}
                 </MenuContextProvider>
 
                 <Route path="/" component={PageNotFound} />
