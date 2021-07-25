@@ -1,13 +1,101 @@
-#content {
-    display: block;   
+@import '../../../../styles/mixins.scss';
 
-    form {
-        input::-webkit-calendar-picker-indicator{
-            display: none;
+#container {
+    display: flex;
+    width: 100%;
+    position: relative; //mudar p/ fixed 
+    flex-direction: column;
+
+    .header-functions {
+        background-color: #1EACE8;
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        height: 9vh;
+        box-shadow: none;
+
+        #nav-icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 3vw 5vw;
+
+            img {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
         }
+    }
 
-        .calendar {
-            display: none;
+    ul {
+        background-color: #1EACE8;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        height: 9vh;
+        padding: 0 5vw;
+        box-shadow: 0 -5px 10px black; 
+        
+        .nav-item {
+            display: flex;
+            width: 50%;
+
+            button {
+                outline: none;
+                background-color: transparent;
+                color: white;
+                width: 100%;
+                height: 100%;
+                border: 0;
+                font-size: 1.2rem;
+
+                &:focus {
+                    border-bottom: 2px solid white;
+                }
+            }
+        }
+    }
+
+    #tab-content {
+        padding: 0 5vw; 
+        height: 50vh;
+        #reserves-form {
+            #select-space {
+                width: 100vw;
+                position: relative;
+                left: -5vw;
+                overflow-x: scroll; 
+                div {
+                    width: max-content;
+                    display: flex;
+                    flex-direction: row;
+                    padding: 0 5vw;
+                    
+                    button + button {
+                        margin-left: 5vw;
+                    }
+                }
+            }
+
+            #select-date {
+                .date-selection-button {
+                    display: flex;
+                    align-items: center;
+                    background-color: transparent;
+                    border: 0;
+
+
+                    p {
+                        margin: 0 0 0 5vw;
+                    }
+                }
+            }
         }
     }
 }
+
+@import "~bootstrap/scss/bootstrap";

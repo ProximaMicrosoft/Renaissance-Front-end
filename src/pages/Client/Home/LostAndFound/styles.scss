@@ -1,4 +1,4 @@
-@import '../../../styles/mixins.scss';
+@import '../../../../styles/mixins.scss';
 
 #container {
     display: flex;
@@ -19,17 +19,13 @@
         #nav-icons {
             display: flex;
             flex-direction: row;
-            justify-content: flex-end;
+            justify-content: space-between;
             padding: 3vw 5vw;
 
             img {
                 &:hover {
                     cursor: pointer;
                 }
-            }
-
-            #return-icon {
-                visibility: hidden;
             }
         }
 
@@ -47,7 +43,6 @@
     main {
         padding: 8vw 5vw;
         max-height: 82vh;
-        overflow-y: scroll;
     }
 }
 

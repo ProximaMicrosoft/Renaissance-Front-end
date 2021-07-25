@@ -1,26 +1,26 @@
-#button-nav {
+#space-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #1EACE8;
-    width: 100%;
-    height: 25vh;
+    width: 30vw;
+    height: 30vw;
     color: white;  
     border-radius: 4vw;
     border: 0;
 
     &:hover {
-        filter: brightness(1.1);
+        background-color: #1277a1;
     }
 
     img {
-        width: 20%;
+        width: 40%;
         margin-bottom: 2%;
     }
 
     h3 {
-        font-size: 2rem;
+        font-size: 80%;
     }
 }
 

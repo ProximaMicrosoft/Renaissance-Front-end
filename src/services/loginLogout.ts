@@ -1,4 +1,3 @@
-
 export function login(user: UserProps) {
     localStorage.setItem("userData", JSON.stringify(user));
 }

@@ -27,6 +27,10 @@
                     cursor: pointer;
                 }
             }
+
+            #return-icon {
+                visibility: hidden;
+            }
         }
 
         #title {
@@ -46,3 +50,5 @@
         overflow-y: scroll;
     }
 }
+
+@import "~bootstrap/scss/bootstrap";

@@ -22,7 +22,7 @@ export function Home() {
         <div id="container">
             <header>
                 <div id="nav-icons">
-                    <img src={returnIcon} hidden alt="Retornar para a página anterior" />
+                    <img src={returnIcon} id="return-icon" alt="Retornar para a página anterior" />
                     <img src={hamburguerIcon} alt="abrir menu  lateral" 
                     id="hamburguer" onClick={() => menuContext.setShow(true)}
                     />
@@ -34,6 +34,8 @@ export function Home() {
             </header>
 
             <main>
+
+                
                 <ButtonNavigation image={icon} title="Reservas" path="/reserves"/>
 
                 <ButtonNavigation image={icon}title="Visitantes" path="/visitors"/>

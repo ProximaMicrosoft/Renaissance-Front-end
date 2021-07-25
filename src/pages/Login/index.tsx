@@ -1,9 +1,9 @@
 import { FormEvent, useEffect, useState } from 'react';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
-import { Link } from '../../components/Link/Link';
+// import { Link } from '../../components/Link/Link';
 
 import { AxiosResponse } from 'axios';
 import { Spinner } from 'react-bootstrap';
@@ -27,7 +27,7 @@ export function Login() {
     const history = useHistory();
     const context = useAuth();
 
-    //verifica se o usuário já estava logado
+    // verifica se o usuário já estava logado
     useEffect(() => {
         if(localStorage.getItem('userData') !== null) { 
             const user = localStorage.getItem('userData')
@@ -41,22 +41,25 @@ export function Login() {
 
     async function handleLogin(e: FormEvent) {
         e.preventDefault();
+
         setLoading(true);
-        const loginResponse: AxiosResponse<LoginResponse> = await api.post('/login', {
-            email,
-            password
-        })
-        setLoading(false);
-        if(loginResponse.status === 200) {
+
+        try{
+            const loginResponse: AxiosResponse<LoginResponse> = await api.post('/login', {
+                email,
+                password
+            })
+
             context?.setUser(loginResponse.data.user);
 
             if(check) 
-                localStorage.setItem("userData", JSON.stringify(loginResponse.data.user))
-            
-            
+                localStorage.setItem("userData", JSON.stringify(loginResponse.data.user));
+
             history.push('/home');
-        } else {
-            alert('Credenciais incorretas, digite novamente ou entre em contato com o administrador.')
+        } catch {
+            window.alert('Credenciais incorretas, digite novamente ou entre em contato com o administrador.');
+
+            setLoading(false);
         }
     }
 
@@ -78,7 +81,7 @@ export function Login() {
                         onChange={e => setEmail(e.currentTarget.value)}
                     />
                     
-                    <fieldset>
+                    <div id="password-field">
                         <input 
                             type={showPassword ? 'text' : 'password'}
                             name="password" 
@@ -96,7 +99,7 @@ export function Login() {
                                 onClick={() => setShowPassword(showPassword ? false : true)}
                             />
                         </div>
-                    </fieldset>
+                    </div>
                     
 
                     <div id="continueConnected">
@@ -109,7 +112,7 @@ export function Login() {
                                 id="connected" 
                             />
                         </div>
-                        Manter-me conectado neste dispositivo
+                        <h3>Manter-me conectado neste dispositivo</h3>
                     </div>
                 </div>
                 
@@ -117,12 +120,12 @@ export function Login() {
                     <button 
                     type="submit" 
                     id="submit" >
-                        {loading ? <Spinner animation="border" variant="light" /> : 'Entrar'}
+                        {loading ? <Spinner animation="border" variant="light" /> : "Entrar"}
                     </button>
 
                     <div id="actions">
                         <Link to="/a">
-                            Esqueci minha senha
+                            <p>Esqueci minha senha</p>
                         </Link>
 
                         <div>
@@ -130,7 +133,7 @@ export function Login() {
                                 Não possui cadastro? 
                             </p>
                             <Link to="/">
-                                Clique Aqui
+                                <p>Clique Aqui</p>
                             </Link>
                         </div>
                     </div>

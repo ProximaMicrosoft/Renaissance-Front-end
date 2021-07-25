@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-// import { PublicRoute } from "./components/CustomRoutes";
+import { MenuContextProvider } from "./contexts/menuContext";
 
 import { useAuth } from "./hooks/useAuth";
 
@@ -8,7 +8,7 @@ import { AdminRoutes } from "./routes/AdminRoutes";
 import { ClientRoutes } from "./routes/ClientRoutes";
 import { Login } from "./pages/Login";
 import { PageNotFound } from "./pages/NotFound";
-import { MenuContextProvider } from "./contexts/menuContext";
+
 
 export function Routes() {
     const context = useAuth();
