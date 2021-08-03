@@ -72,11 +72,12 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
 
 ## 🚧 STATUS DO PROJETO
 
-- Autenticação
-- Cadastro
-- Reserva de espaço
-- Meus dados
-- regras do condomínio
+- [x] Autenticação
+- [x] Responsividade
+- [ ] Cadastro
+- [x] Reserva de espaço
+- [x] Meus dados
+- [ ] Regras do condomínio
 
 ## ✅ COMO UTILIZAR?
 Para utilizar a aplicação <a href="https://renaissance-theta.vercel.app/">clique aqui</a>
