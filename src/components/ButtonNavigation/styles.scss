@@ -1,11 +1,14 @@
+@import '../../styles/global.scss';
+
 #button-nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #1EACE8;
+    background-color: $colorButtonBackground;
+    box-shadow: 0px 6px 10px -2px rgba(0,0,0,0.55);
     width: 100%;
-    height: 25vh;
+    height: 40vw;
     color: white;  
     border-radius: 4vw;
     border: 0;
@@ -15,12 +18,13 @@
     }
 
     img {
-        width: 20%;
+        width: 22%;
         margin-bottom: 2%;
     }
 
     h3 {
-        font-size: 2rem;
+        color: $colorPrimaryDark;
+        font-size: 8vw;
     }
 }
 

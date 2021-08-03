@@ -10,9 +10,9 @@ import { Spinner } from 'react-bootstrap';
 
 import { api } from '../../services/api';
 
-import logoImg from '../../assets/logo.svg';
-import eye from '../../assets/eye-outline.svg';
-import eyeClosed from '../../assets/eye-off-outline.svg';
+import logoImg from '../../assets/logo.png';
+import eye from '../../assets/eye.svg';
+import eyeClosed from '../../assets/eye-off.svg';
 
 import './styles.scss';
 
@@ -22,7 +22,8 @@ export function Login() {
     const [password, setPassword] = useState('');
     const [check, setCheck] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
+    const [lightPasswordField, setLightPasswordField] = useState(false);
 
     const history = useHistory();
     const context = useAuth();
@@ -64,83 +65,83 @@ export function Login() {
     }
 
     return(
-        <div id="content">
+        <div id="container-login">
             <div id="title_login">
                 <img src={logoImg} alt="Renaissance Logo" />
-                <h3>RENAISSANCE</h3>
             </div>
 
-            <form onSubmit={handleLogin}>
-                <div id="content-top">
-                    <input 
-                        type="email" 
-                        name="email" 
-                        id="email" 
-                        placeholder="Digite seu email"
-                        value={email}
-                        onChange={e => setEmail(e.currentTarget.value)}
-                    />
-                    
-                    <div id="password-field">
+            <main>
+                <form onSubmit={handleLogin}>
+                    <h1>Login</h1>
+ 
+                    <div id="content-top">
                         <input 
-                            type={showPassword ? 'text' : 'password'}
-                            name="password" 
-                            id="password" 
-                            autoComplete="current-password"
-                            placeholder="Digite sua senha"
-                            value={password}
-                            onChange={e => setPassword(e.currentTarget.value)}
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            placeholder="Email"
+                            value={email}
+                            onChange={e => setEmail(e.currentTarget.value)}
                         />
                         
-                        <div id="showPassword">
-                            <img 
-                                src={showPassword ? eye : eyeClosed} 
-                                alt="Mostrar/ocultar senha" 
-                                onClick={() => setShowPassword(showPassword ? false : true)}
+                        
+                        <div className={`password-field ${lightPasswordField ? 'light' : ''}`}>
+                            <input 
+                                type={showPassword ? 'text' : 'password'}
+                                 name="password" 
+                                id="password" 
+                                autoComplete="current-password"
+                                placeholder="Senha"
+                                value={password}
+                                onBlur={() => setLightPasswordField(false)}
+                                onFocus={() => setLightPasswordField(true)}
+                                onChange={e => setPassword(e.currentTarget.value)}
                             />
+                            
+                            <div id="showPassword">
+                                <img 
+                                    src={showPassword ? eye : eyeClosed} 
+                                    alt="Mostrar/ocultar senha" 
+                                    onClick={() => setShowPassword(showPassword ? false : true)}
+                                />
+                            </div>
+                        </div>
+                        
+
+                        <div id="continueConnected">
+                            <div>
+                                <input 
+                                    type="checkbox" 
+                                    checked={check} 
+                                    onChange={() => setCheck(check ? false : true)} 
+                                    name="connected" 
+                                    id="connected" 
+                                />
+                            </div>
+                            <h5>Manter-me conectado</h5>
                         </div>
                     </div>
                     
+                    <div id="content-bottom">
+                        <button 
+                        type="submit" 
+                        id="submit" >
+                            {loading ? <Spinner animation="border" variant="light" /> : "Entrar"}
+                        </button>
 
-                    <div id="continueConnected">
-                        <div>
-                            <input 
-                                type="checkbox" 
-                                checked={check} 
-                                onChange={() => setCheck(check ? false : true)} 
-                                name="connected" 
-                                id="connected" 
-                            />
-                        </div>
-                        <h3>Manter-me conectado neste dispositivo</h3>
-                    </div>
-                </div>
-                
-                <div id="content-bottom">
-                    <button 
-                    type="submit" 
-                    id="submit" >
-                        {loading ? <Spinner animation="border" variant="light" /> : "Entrar"}
-                    </button>
-
-                    <div id="actions">
                         <Link to="/a">
-                            <p>Esqueci minha senha</p>
+                            Esqueci minha senha
                         </Link>
-
-                        <div>
-                            <p>
-                                Não possui cadastro? 
-                            </p>
-                            <Link to="/">
-                                <p>Clique Aqui</p>
-                            </Link>
-                        </div>
                     </div>
-                </div>
-            </form>
-
-            
+                 
+                    <div id="unregister">
+                            Não possui cadastro? 
+                        <Link to="/">
+                            Clique Aqui
+                        </Link>
+                    </div>
+                </form>
+            </main>
         </div>
     );
 }

@@ -10,10 +10,19 @@
 }
 
 a {
+    color: $colorFont;
+    margin-top: 5px;
     text-decoration: none;
 }
 
 h1, h2, h3, h4, h5 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     margin-bottom: 0;
 }
+
+img {
+    width: 10vw;
+}
+
 

@@ -1,12 +1,14 @@
+@import '../../../styles/global.scss';
+
 #item-button {
     width: 100%;
     padding: 3vw 5vw;
     transition: background-color 200ms;
     border: 0;
-    background-color: #1EACE8;
+    background-color: transparent;
 
     &:hover {
-        background-color: #177fac;
+        background-color: $colorPrimaryLight;
     }
 
     #content-button {
@@ -17,12 +19,12 @@
         h3 {
             margin: 0;
             font-weight: 400;
-            font-size: 1.2rem;
+            font-size: 5vw;
             color: white;
         }
     
         img {
-            height: 5vw;
+            width: 8vw;
             margin-left: 10%;
         }
     }

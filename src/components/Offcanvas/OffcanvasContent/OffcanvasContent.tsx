@@ -1,12 +1,11 @@
 import { OffcanvasItem } from '../OffcanvasItem/OffcanvasItem';
 
 import hamburguer from '../../../assets/hamburguer.svg';
-import home from '../../../assets/home.svg';
-import user from '../../../assets/user.svg';
-import calendar from '../../../assets/calendar.svg';
-import visitants from '../../../assets/visitants.svg';
-import documents from '../../../assets/documents.svg';
-import out from '../../../assets/out.svg';
+import home from '../../../assets/menu_home.svg';
+import user from '../../../assets/menu_user.svg';
+import calendar from '../../../assets/menu_calendar.svg';
+import documents from '../../../assets/menu_documents.svg';
+import out from '../../../assets/menu_go-out.svg';
 
 import './styles.scss';
 import { useMenu } from '../../../hooks/useMenu';
@@ -39,17 +38,15 @@ export function OffcanvasContent() {
                     </Link>
 
                     <Link to="/myreserves">
-                    <OffcanvasItem title="Minhas reservas" src={calendar}/>
+                        <OffcanvasItem title="Minhas reservas" src={calendar}/>
                     </Link>
 
-                    <Link to="/myvisitors">
-                        <OffcanvasItem title="Meus visitantes" src={visitants}/>
+                    <Link to="/rules">
+                        <OffcanvasItem title="Documentos" src={documents}/>
                     </Link>
                 </div>
 
-                <Link to="/rules">
-                    <OffcanvasItem title="Documentos" src={documents}/>
-                </Link>
+                
             </main>
 
             <footer onClick={() => logout() }>

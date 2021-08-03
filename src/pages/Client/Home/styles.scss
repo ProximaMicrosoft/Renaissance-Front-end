@@ -1,13 +1,14 @@
-@import '../../../styles/mixins.scss';
+@import '../../../styles/global.scss';
 
-#container {
+#container-home {
+    background-color: $colorPrimaryBackground;
     display: flex;
     width: 100%;
     position: relative; //mudar p/ fixed 
     flex-direction: column;
 
     header {
-        background-color: #1EACE8;
+        background-color: $colorPrimaryDark;
         position: sticky;
         top: 0;
         left: 0;
@@ -23,6 +24,7 @@
             padding: 3vw 5vw;
 
             img {
+                width: 8vw;
                 &:hover {
                     cursor: pointer;
                 }
@@ -39,7 +41,7 @@
 
             h5 {
                 color: white;
-                font-weight: 400;
+                font-weight: 300;
             }
         }
     }
@@ -49,6 +51,7 @@
         max-height: 82vh;
         overflow-y: scroll;
     }
+
 }
 
 @import "~bootstrap/scss/bootstrap";

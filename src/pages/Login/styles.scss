@@ -1,151 +1,174 @@
 @import '../../styles/global.scss';
 
-#content {
-    padding: 0 5vw;
+#container-login {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    background-color: $colorPrimaryBackground;
 
     #title_login {
+        width: 100%;
+        height: 15%;
+        background-color: $colorPrimaryDark;
         @include centralizeContent();
-        flex-direction: column;
-        height: 30%;
         img {
-            width: 35vw;
-            margin-bottom: 10px;
-        }
-
-        h3 {
-            font-size: 2.1rem;
-            font-weight: 400;
+            position: relative;
+            top: -2.3vw;
+            width: 45%;
         }
     }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 45%;
+    main {
+        height: 85%;
+        @include centralizeContent();
 
-        #content-top {
+        form {
+            position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 40%;
+            top: -5vw;
+            width: 80%;
+            height: 100%;
+            background-color: #f7f7f7;
+            border-radius: 4vw; 
+            box-shadow: 0px 14px 24px 0px rgba(0,0,0,0.37);
+            padding: 2% 8%;
 
-            #email, #password-field {
-                border: 0;
-                border-bottom: 2px solid black;
-                font-size: 1.2rem;
-                font-weight: 400;
-                color: black;
-
-                &::placeholder {
-                    color: rgba(73, 73, 73, 0.534);
-                }
-            }
-
-            #password-field {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                #password {
-                    border: 0;
-                    width: 90%;
-
-                    &::placeholder {
-                        color: rgba(73, 73, 73, 0.534);
-                    }
-                }
-
-                #showPassword {
-                    @include centralizeContent();
-                    width: 10%;
-                }
-            }
-
-            #continueConnected {
-                display: flex;
-                flex-direction: row-reverse;
-                justify-content: space-between;
-                align-items: center;
-                line-height: 0;  
-                width: 100%;
-                
-                div {
-                    width: 10%;
-                    @include centralizeContent();
-
-                    #connected[type=checkbox] {
-                        transform: scale(1.6);
-                        color: aqua;
-                    }
-                }
-
-                h3 {
-                    width: 90%;
-                    font-size: 0.8rem;
-                    margin-bottom: 0;
-                }
-            }
-        }
-
-        #content-bottom {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 40%;
-
-            #submit {
-                border: 0;
-                background-color: #1EACE8;
-                border-radius: 1vw;
-                color: white;
+            h1 {
                 width: 100%;
                 height: 40%;
-                font-size: 1.3rem;
-                font-weight: 400;
-                transition: filter 200ms;
-
-                &:hover {
-                    text-decoration: none;
-                    filter: brightness(1.1);
-                }
-
+                font-weight: bolder;
+                font-size: 10vw;
+                color: $colorPrimaryDark;
+                @include centralizeContent();
             }
 
-            #actions {
+            #content-top {
+                height: 25%;
                 display: flex;
                 flex-direction: column;
-                color: #1EACE8;
-                
-                p {
-                    margin-bottom: 0;
+                justify-content: space-between;
+
+                input {
+                    border: 0;
+                    background-color: transparent;
+                    font-weight: 400;
+                    font-size: 5vw;
+                    color: $colorFont;
+
+                    &::placeholder {
+                        color: #6b6b6b;
+                    }
                 }
-                
+
+                #email {
+                    border-bottom: 2px solid #DDDDDD;
+
+                    &:focus {
+                        border-bottom: 2px solid $colorPrimaryDark;
+                        color: $colorPrimaryDark;
+                    }
+                }
+
+                .password-field {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    border-bottom: 2px solid #DDDDDD;
+
+                    #password {
+                        width: 75%;
+                        
+                    }
+
+                    #showPassword {
+                        width: 25%;
+                        height: 100%;
+                        @include centralizeContent();
+
+                        img {
+                            width: 40%;
+                        }
+                    }
+
+                    &:focus {
+                        border-bottom: 2px solid $colorPrimaryDark;
+                        color: $colorPrimaryDark;
+                    }                    
+                }
+
+                .light {
+                    border-bottom: 2px solid $colorPrimaryDark;
+                    #password {
+                        color: $colorPrimaryDark;
+                    }
+                }
+
+                #continueConnected {
+                    display: flex;
+                    flex-direction: row;
+
+                    input {
+                        margin-right: 2vw;
+                    }
+
+                    h5 {
+                        font-size: 5vw;
+                    }
+                }
+            }
+
+            #content-bottom {
+                display: flex;
+                flex-direction: column;
+                @include centralizeContent();
+                height: 25%;
+
+                button {
+                    width: 100%;
+                    height: 13vw;
+                    border: 0;
+                    border-radius: 2.5vw;
+                    background-color: $colorPrimaryDark;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 5vw;
+
+                    &:active {
+                        background-color: $colorPrimaryLight;
+                    }
+                }
+
                 a {
-                    color: #1EACE8;
+                    color: $colorFont;
+                    margin-top: 5px;
                     text-decoration: none;
-                    width: fit-content;
+                    font-size: 5vw;
 
                     &:hover {
-                        text-decoration: underline;
+                        color: $colorPrimaryLight;
                     }
-                    
                 }
+            }
 
-                div {
-                    display: flex;
-                    align-items: center;
-    
-                    p {
-                        margin: 0 1vw 0 0;
+            #unregister {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                color: $colorFont;
+                font-size: 4vw;
+                height: 10%;
+
+
+                a {
+                    color: $colorFont;
+                    margin: 0;
+                    font-size: 4vw;
+                    margin-left: 3px;
+
+                    &:hover {
+                        color: $colorPrimaryLight;
                     }
                 }
             }
         }
-
     }
 }
