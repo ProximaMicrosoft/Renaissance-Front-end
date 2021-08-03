@@ -10,7 +10,7 @@ import { Spinner } from 'react-bootstrap';
 
 import { api } from '../../services/api';
 
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/logo.svg';
 import eye from '../../assets/eye.svg';
 import eyeClosed from '../../assets/eye-off.svg';
 

@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./logo.png" width="50%"><br>
+<img src="./logo.svg" width="50%"><br>
 🏡 Renaissance é um web-app de gestão de condomínios, com o objetivo de melhorar a usabilidade do morador, contribuindo assim para a rápida execução de suas tarefas.
 </p>
 <br>
