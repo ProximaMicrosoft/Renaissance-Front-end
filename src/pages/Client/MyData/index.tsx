@@ -1,35 +1,27 @@
-import { useHistory } from 'react-router-dom';
 import { Offcanvas, Tabs, Tab } from 'react-bootstrap';
 
-import { OffcanvasContent } from '../../../../../components/Offcanvas/OffcanvasContent/OffcanvasContent';
+import { OffcanvasContent } from '../../../components/Offcanvas/OffcanvasContent/OffcanvasContent';
 
-import { useMenu } from '../../../../../hooks/useMenu';
+import { useMenu } from '../../../hooks/useMenu';
 
-import hamburguerIcon from '../../../../../assets/hamburguer.svg';
-import returnIcon from '../../../../../assets/arrow-left.svg';
-import user from '../../../../../assets/profile_user.svg';
-import condo from '../../../../../assets/profile_condo.svg';
-import cpf from '../../../../../assets/profile_cpf.svg';
-import born from '../../../../../assets/profile_calendar.svg';
-import email from '../../../../../assets/profile_email.svg';
-import password from '../../../../../assets/profile_password.svg';
-import phone from '../../../../../assets/profile_phone.svg';
+import user from '../../../assets/profile_user.svg';
+import condo from '../../../assets/profile_condo.svg';
+import cpf from '../../../assets/profile_cpf.svg';
+import born from '../../../assets/profile_calendar.svg';
+import email from '../../../assets/profile_email.svg';
+import password from '../../../assets/profile_password.svg';
+import phone from '../../../assets/profile_phone.svg';
 
 import './styles.scss';
+import NavBar from '../../../components/NavBar/NavBar';
 
 export function MyData() {  
     const menuContext = useMenu();
-    const history = useHistory();
 
     return(
         <div id="container">
             <header className="header-functions">
-                <div id="nav-icons">
-                    <img src={returnIcon} onClick={() => history.goBack()} alt="Retornar para a página anterior" />
-                    <img src={hamburguerIcon} alt="abrir menu  lateral" 
-                    id="hamburguer" className="hamburguer" onClick={() => menuContext.setShow(true)}
-                    />
-                </div>
+                <NavBar />
             </header>
  
             <Tabs defaultActiveKey="my-data" id="uncontrolled-tab-example" className="mb-3">

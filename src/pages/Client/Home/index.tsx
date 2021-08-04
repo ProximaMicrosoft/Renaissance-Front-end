@@ -6,8 +6,6 @@ import { OffcanvasContent } from '../../../components/Offcanvas/OffcanvasContent
 import { useAuth } from '../../../hooks/useAuth';
 import { useMenu } from '../../../hooks/useMenu';
 
-import hamburguerIcon from '../../../assets/hamburguer.svg';
-import returnIcon from '../../../assets/arrow-left.svg';
 import myDataIcon from '../../../assets/user.svg';
 import reservesIcon from '../../../assets/calendar.svg';
 import documentsIcon from '../../../assets/documents.svg';
@@ -15,6 +13,7 @@ import documentsIcon from '../../../assets/documents.svg';
 import { getFirstName } from '../../../utils/getFirstName';
 
 import './styles.scss';
+import NavBar from '../../../components/NavBar/NavBar';
 
 export function Home() {       
     const authContext = useAuth();
@@ -23,12 +22,7 @@ export function Home() {
     return( 
         <div id="container-home">
             <header>
-                <div id="nav-icons">
-                    <img src={returnIcon} id="return-icon" alt="Retornar para a página anterior" />
-                    <img src={hamburguerIcon} alt="abrir menu  lateral" 
-                    id="hamburguer" onClick={() => menuContext.setShow(true)}
-                    />
-                </div>
+                <NavBar home/>
 
                 <div id="title">
                     <h5>Bem-vindo, {getFirstName(authContext.user?.name)}</h5>

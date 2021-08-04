@@ -1,6 +1,9 @@
+import gym from '../assets/gym.svg';
+
 export const rules = [ {
     idLocal: 1,
     nameLocal: "Academia",
+    iconLocal: gym,
     inicialHour: 5,
     finalHour: 23,
     reservesLimit: 2,
@@ -8,6 +11,7 @@ export const rules = [ {
 }, {
     idLocal: 2,
     nameLocal: "Piscina",
+    iconLocal: gym,
     inicialHour: 6,
     finalHour: 22,
     reservesLimit: 3,
@@ -15,6 +19,7 @@ export const rules = [ {
 }, {
     idLocal: 3,
     nameLocal: "Brinquedoteca",
+    iconLocal: gym,
     inicialHour: 7,
     finalHour: 22,
     reservesLimit: 1,
@@ -22,6 +27,7 @@ export const rules = [ {
 }, {
     idLocal: 4,
     nameLocal: "Campinho",
+    iconLocal: gym,
     inicialHour: 7,
     finalHour: 22,
     reservesLimit: 1,
@@ -29,6 +35,7 @@ export const rules = [ {
 }, {
     idLocal: 5,
     nameLocal: "Quadra",
+    iconLocal: gym,
     inicialHour: 7,
     finalHour: 22,
     reservesLimit: 1,
@@ -36,6 +43,7 @@ export const rules = [ {
 }, {
     idLocal: 6,
     nameLocal: "Salão de Jogos",
+    iconLocal: gym,
     inicialHour: 6,
     finalHour: 23,
     reservesLimit: 1,
@@ -43,6 +51,7 @@ export const rules = [ {
 }, {
     idLocal: 7,
     nameLocal: "Deck",
+    iconLocal: gym,
     inicialHour: 8,
     finalHour: 22,
     reservesLimit: 1,
@@ -50,6 +59,7 @@ export const rules = [ {
 }, {
     idLocal: 8,
     nameLocal: "Salões de festas A",
+    iconLocal: gym,
     inicialHour: 8,
     finalHour: 23,
     reservesLimit: 1,
@@ -57,6 +67,7 @@ export const rules = [ {
 }, {
     idLocal: 9,
     nameLocal: "Salões de festas B",
+    iconLocal: gym,
     inicialHour: 8,
     finalHour: 23,
     reservesLimit: 1,
@@ -64,6 +75,7 @@ export const rules = [ {
 }, {
     idLocal: 10,
     nameLocal: "Salões de festas C",
+    iconLocal: gym,
     inicialHour: 8,
     finalHour: 23,
     reservesLimit: 1,

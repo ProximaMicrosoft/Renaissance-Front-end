@@ -1,0 +1,41 @@
+.reserve-item {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vw;
+
+    #reserves-info {
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-right: 5vw;
+            width: 10vw;
+        }
+
+        #info-text {
+            h3, h5 {
+                margin-bottom: 0;
+            }
+
+            h3 {
+                font-size: 6vw
+            }
+
+            #data {
+                display: flex;
+                h5 {
+                    font-size: 5vw
+                }
+
+                h5+h5 {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    img {
+        width: 10vw;
+    }
+}

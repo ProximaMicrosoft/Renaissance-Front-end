@@ -1,4 +1,4 @@
-@import '../../../../styles/global.scss';
+@import '../../../styles/global.scss';
 
 #container {
     display: flex;
@@ -162,7 +162,7 @@
                                 }
 
                                 &::after {
-                                    background-image: url('../../../../assets/collapse.svg')
+                                    background-image: url('../../../assets/collapse.svg')
                                 }
                             }
                             
@@ -254,41 +254,6 @@
 
         .listing {
             padding: 0;
-
-            li {
-                list-style: none;
-                display: flex;
-                justify-content: space-between;
-
-                #reserves-info {
-                    display: flex;
-                    align-items: center;
-
-                    svg {
-                        margin-right: 5vw;
-                        width: 10vw;
-
-                    }
-
-                    #info-text {
-                        h3, h5 {
-                            margin-bottom: 0;
-                        }
-
-                        h3 {
-                            font-size: 6vw
-                        }
-
-                        h5 {
-                            font-size: 5vw
-                        }
-                    }
-                }
-
-                img {
-                    width: 10vw;
-                }
-            }
         }
     }
 }
