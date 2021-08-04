@@ -24,6 +24,7 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
 ### Protótipo
 <ul>
     <img src="https://cdn.worldvectorlogo.com/logos/figma-1.svg" height="30">
+    <p>Link do protótipo: <a href="https://www.figma.com/file/m2kd7e5Q595obgfMw0oyyB/Projeto-Renaissance?node-id=0%3A1 ">Figma</a></p>
 </ul>
 
 ### Front-end
@@ -57,6 +58,7 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
 ### Diagrama de processos
 <ul>
     <img src="https://store-images.s-microsoft.com/image/apps.14142.2ec57164-ba5b-42ee-8253-ade72ca74c8d.e8efbcc8-e27f-4682-9321-eb111eb3bc68.950e1c22-0dd9-4079-807b-145ecdb6df9c.png" height="30">
+    <p>Link do diagrama: <a href="https://drive.google.com/file/d/1yJaVmnmJD9mrgcHU5X1R0mkqc7WP1q-r/view">Draw.io</a></p>
 </ul>
 
 ### Deploy
@@ -67,14 +69,17 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
 
 ## 🚧 MAPEAMENTO DE FUNCIONALIDADES/STATUS DO PROJETO
 
-- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Login/index.tsx">Autenticação</a>
-- [ ] Responsividade
-- [ ] Cadastro de morador
-- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Home/Reserves/index.tsx">Reserva de espaço</a>
-- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Home/Profile/MyData/index.tsx">Meus dados</a>
-- [ ] Regras do condomínio
+- [x] RF0001: <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Login/index.tsx">Autenticação</a>
+- [ ] RF0002: Cadastro de usuário
+- [x] RF0003: <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Reserves/index.tsx">Reserva de espaço</a>
+- [x] RF0004: <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/MyData/index.tsx">Meus dados</a>
+- [ ] RF0005: Regras do condomínio
 
 ## ✅ COMO UTILIZAR?
+Utilize as credenciais a seguir para entrar como morador:
+- email: antonioguilhermeinfo@gmail.com
+- senha: ####56567687879
+
 Para utilizar a aplicação <a href="https://renaissance-theta.vercel.app/">clique aqui</a>
 <h5>OBS. Utilize o navegador Chrome ou Safari para poder utilizar como PWA</h5>
 
