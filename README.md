@@ -9,13 +9,13 @@
 Aprimorar o app existente do condomínio Renaissance Residence Club, corrigindo falhas de segurança, usabilidade, desempenho e design.
 
 ## 🎲 DESCRIÇÃO DO PROJETO
-Projeto desenvolvido para a cadeira de Projeto Integrado I do SMD, cuja nossa equipe, denominada <b>A próxima microsoft</b>, é composta pelos seguintes integrantes:
+Projeto desenvolvido para a cliente Tamires, cuja nossa equipe, denominada <b>A próxima microsoft</b>, é composta pelos seguintes integrantes:
 <ul>
     <li>Ana Carolina Clark Roriz (Designer/Revisora)</li>
     <li>Pedro Henrique Pontes Aguiar (Designer/Arquiteto da informação/Atendimento)</li>
     <li>Reinaldo da Silva Nascimento (Desenvolvedor Front-end/Líder)</li>
     <li>Antônio Guilherme do Nascimento Pereira (Desenvolvedor Back-end/Coordenador de testes)</li>
-</ul>
+</ul> 
 
 A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que estava sendo usada pelos moradores, o qual não estava tendo uma boa performance, além de pouco intuitivo por conta do design. 
 
@@ -59,24 +59,19 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
     <img src="https://store-images.s-microsoft.com/image/apps.14142.2ec57164-ba5b-42ee-8253-ade72ca74c8d.e8efbcc8-e27f-4682-9321-eb111eb3bc68.950e1c22-0dd9-4079-807b-145ecdb6df9c.png" height="30">
 </ul>
 
-### Mapeamento de processos
-<ul>
-    <img src="https://img.utdstc.com/icon/02b/264/02b264cfcc2ec012542a9f5452851ce249ff7759f006398deccb75fa1d11a396:200" height="30">
-</ul>
-
 ### Deploy
 <ul>
     <img src="https://camo.githubusercontent.com/add2c9721e333f0043ac938f3dadbc26a282776e01b95b308fcaba5afaf74ae3/68747470733a2f2f6173736574732e76657263656c2e636f6d2f696d6167652f75706c6f61642f76313538383830353835382f7265706f7369746f726965732f76657263656c2f6c6f676f2e706e67" height="30">
     <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQGmNZMDOpmMQg/company-logo_200_200/0/1519905610801?e=2159024400&v=beta&t=D5lu9rTbQ_aW1ubme8GIq_QhKIm8WTiXTtoBlEHPcA8" height="30">
 </ul>
 
-## 🚧 STATUS DO PROJETO
+## 🚧 MAPEAMENTO DE FUNCIONALIDADES/STATUS DO PROJETO
 
-- [x] Autenticação
-- [x] Responsividade
-- [ ] Cadastro
-- [x] Reserva de espaço
-- [x] Meus dados
+- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Login/index.tsx">Autenticação</a>
+- [ ] Responsividade
+- [ ] Cadastro de morador
+- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Home/Reserves/index.tsx">Reserva de espaço</a>
+- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Home/Profile/MyData/index.tsx">Meus dados</a>
 - [ ] Regras do condomínio
 
 ## ✅ COMO UTILIZAR?
