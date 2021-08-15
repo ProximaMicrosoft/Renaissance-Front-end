@@ -67,13 +67,17 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
     <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQGmNZMDOpmMQg/company-logo_200_200/0/1519905610801?e=2159024400&v=beta&t=D5lu9rTbQ_aW1ubme8GIq_QhKIm8WTiXTtoBlEHPcA8" height="30">
 </ul>
 
-## 🚧 MAPEAMENTO DE FUNCIONALIDADES/STATUS DO PROJETO
+## 🚧 MAPEAMENTO DE FUNCIONALIDADES
 
-- [x] RF0001: <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Login/index.tsx">Autenticação</a>
-- [ ] RF0002: Cadastro de usuário
-- [x] RF0003: <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Reserves/index.tsx">Reserva de espaço</a>
-- [x] RF0004: <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/MyData/index.tsx">Meus dados</a>
-- [ ] RF0005: Regras do condomínio
+| Requisitos | Descrição | Função | Arquivo | Status
+| --- | --- | --- | --- | --- |
+| RF0001 | Ao realizar login, o sistema deve realizar uma separação entre quem são os administradores e quem são os moradores, assim, enquanto que as funcionalidades dos moradores serão aspectos particulares, as funcionalidades dos administradores será para observação de aspectos gerais. | handleLogin() | <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Login/index.tsx">index.tsx</a> | <li align="center">- [x] </li> |
+| RF0002 | Cadastrar usuários. Somente os administradores deverão fazer o cadastro de usuários contendo diversos dados como nome, foto, cpf, email, veículos, senha, etc. | - | - | <li align="center">- [ ] </li> |
+| RF0003 | Reserva de espaço. Os moradores podem ver quais dias e horários estão disponíveis e indisponíveis. Além disso, podem excluir as reservas. | handleCreateReserve() | <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Reserves/index.tsx">index.tsx</a> | <li align="center">- [x] </li> |
+| RF0004 | Registro de visitantes. Os moradores podem avisar qual é o visitante está chegando no condomínio informando nome, tipo(entregador, amigo, …), horário, foto(opcional). | - | - | <li align="center">- [ ] </li> |
+| RF0005 | Achados e Perdidos. Os moradores podem cadastrar algum item perdido pelo condomínio adicionando uma descrição e uma foto(opcional). Posteriormente, pode-se modificar o status do item caso já tenha encontrado. | - | - | <li align="center">- [ ] </li> | 
+| RF0006 | Meus dados. Os dados informados no cadastro do administrador poderão ser consultados, porém, somente alguns podem ser editados, como email, senha, foto. Quaisquer alterações posteriores devem ser relatadas à administração. | useAuth() | <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/MyData/index.tsx">index.tsx</a> | <li align="center">- [x] </li> |
+| RF0007 | Regras do condomínio. Os moradores poderão observar quais são as regras do condomínio e somente a administração poderá modificar. | - | - | <li align="center">- [ ] </li> |
 
 ## ✅ COMO UTILIZAR?
 Utilize as credenciais a seguir para entrar como morador:
