@@ -1,73 +1,67 @@
 import { FormEvent, useEffect, useState } from 'react';
-
 import { useHistory, Link } from 'react-router-dom';
+
+import { ButtonSubmit } from '../../components/buttonSubmit';
+import { AlertModal } from '../../components/modal/alert';
+
 import { useAuth } from '../../hooks/useAuth';
 
-// import { Link } from '../../components/Link/Link';
+import logoIcon from '../../assets/icons/logo.svg';
+import eyeIcon from '../../assets/icons/eye.svg';
+import eyeClosedIcon from '../../assets/icons/eye-off.svg';
 
-import { AxiosResponse } from 'axios';
-import { Spinner } from 'react-bootstrap';
+import { login } from '../../services/user';
 
-import { api } from '../../services/api';
-
-import logoImg from '../../assets/logo.svg';
-import eye from '../../assets/eye.svg';
-import eyeClosed from '../../assets/eye-off.svg';
+import { getStorage, saveStorage } from '../../utils/storage';
 
 import './styles.scss';
 
 
 export function Login() {
+    const history = useHistory();
+    const authContext = useAuth();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [check, setCheck] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [isCheckboxMarked, setIsCheckboxMarked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [lightPasswordField, setLightPasswordField] = useState(false);
-
-    const history = useHistory();
-    const context = useAuth();
+    const [modalShow, setModalShow] = useState(false);
 
     // verifica se o usuário já estava logado
     useEffect(() => {
-        if(localStorage.getItem('userData') !== null) { 
-            const user = localStorage.getItem('userData')
-
-            typeof(user) === 'string' && context?.setUser(JSON.parse(user))
-
-            history.push('/home')
+        if(getStorage("userData")) { 
+            authContext.setUser(getStorage("userData"));
+            console.log(getStorage('userData'));
+            history.push('/');
         }
+
+        
         // eslint-disable-next-line
     }, [])
 
-    async function handleLogin(e: FormEvent) {
+    function handleLogin(e: FormEvent) {
         e.preventDefault();
 
-        setLoading(true);
+        setIsLoading(true);
 
-        try{
-            const loginResponse: AxiosResponse<LoginResponse> = await api.post('/login', {
-                email,
-                password
+        login(email, password)
+            .then((e) => {
+                authContext.setUser(e.data.user)
+                isCheckboxMarked && saveStorage("userData", e.data.user);
+                history.push('/');
             })
-
-            context?.setUser(loginResponse.data.user);
-
-            if(check) 
-                localStorage.setItem("userData", JSON.stringify(loginResponse.data.user));
-
-            history.push('/home');
-        } catch {
-            window.alert('Credenciais incorretas, digite novamente ou entre em contato com o administrador.');
-
-            setLoading(false);
-        }
-    }
+            .catch(() => {
+                window.alert('Credenciais incorretas, digite novamente ou entre em contato com o administrador.');
+                setIsLoading(false);
+            })
+    }    
 
     return(
         <div id="container-login">
             <div id="title_login">
-                <img src={logoImg} alt="Renaissance Logo" />
+                <img src={logoIcon} alt="Renaissance Logo" />
             </div>
 
             <main>
@@ -84,7 +78,6 @@ export function Login() {
                             onChange={e => setEmail(e.currentTarget.value)}
                         />
                         
-                        
                         <div className={`password-field ${lightPasswordField ? 'light' : ''}`}>
                             <input 
                                 type={showPassword ? 'text' : 'password'}
@@ -100,7 +93,7 @@ export function Login() {
                             
                             <div id="showPassword">
                                 <img 
-                                    src={showPassword ? eye : eyeClosed} 
+                                    src={showPassword ? eyeIcon : eyeClosedIcon} 
                                     alt="Mostrar/ocultar senha" 
                                     onClick={() => setShowPassword(showPassword ? false : true)}
                                 />
@@ -112,8 +105,8 @@ export function Login() {
                             <div>
                                 <input 
                                     type="checkbox" 
-                                    checked={check} 
-                                    onChange={() => setCheck(check ? false : true)} 
+                                    checked={isCheckboxMarked} 
+                                    onChange={() => setIsCheckboxMarked(isCheckboxMarked ? false : true)} 
                                     name="connected" 
                                     id="connected" 
                                 />
@@ -123,25 +116,26 @@ export function Login() {
                     </div>
                     
                     <div id="content-bottom">
-                        <button 
-                        type="submit" 
-                        id="submit" >
-                            {loading ? <Spinner animation="border" variant="light" /> : "Entrar"}
-                        </button>
+                        <ButtonSubmit loading={isLoading} text="Entrar"/>
 
-                        <Link to="/a">
-                            Esqueci minha senha
-                        </Link>
+                        <Link to="/a">Esqueci minha senha</Link>
                     </div>
                  
                     <div id="unregister">
-                            Não possui cadastro? 
-                        <Link to="/">
-                            Clique Aqui
-                        </Link>
+                        Não possui cadastro?<a type="button" onClick={() => setModalShow(true)}>Clique Aqui</a>
                     </div>
                 </form>
             </main>
+
+            <AlertModal 
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            >
+                <h3>Fale com o administrador do seu condomínio para realizar seu cadastro</h3>
+                
+            </AlertModal>
         </div>
+
+        
     );
 }

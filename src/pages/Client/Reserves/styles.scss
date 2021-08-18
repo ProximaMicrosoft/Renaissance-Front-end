@@ -1,4 +1,4 @@
-@import '../../../styles/global.scss';
+@import '../../../assets/scss/global.scss';
 
 #container {
     display: flex;
@@ -8,7 +8,7 @@
     flex-direction: column;
     background-color: $colorPrimaryBackground;
 
-    .header-functions {
+    header {
         background-color: $colorPrimaryDark;
         position: sticky;
         top: 0;
@@ -17,21 +17,6 @@
         z-index: 1;
         height: 9vh;
         box-shadow: none;
-
-        #nav-icons {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 3vw 5vw;
-
-            img {
-                width: 8vw;
-                
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
     }
 
     ul.mb-3 {
@@ -58,11 +43,11 @@
                 height: 100%;
                 border: 0;
                 font-size: 5vw;
-
-                &:active {
-                    border-bottom: 2px solid white;
-                }
             }
+            .active {
+                border-bottom: 3px solid white;
+            }
+            
         }
     }
 
@@ -104,9 +89,6 @@
                         border: 0;
                         margin-bottom: 10px;
                     
-
-                        
-                    
                         svg {
                             width: 50%;
                             pointer-events: none;
@@ -119,12 +101,18 @@
                             pointer-events: none;
                         }
                     }
-
+                    
                     .selected {
                         background-color: $colorPrimaryLight;
                         color: white;
+                        
+                        svg {
+                            path {
+                                stroke: white;
+                            }
+                        }
                     }
-                    
+
                     .space-button + .space-button {
                         margin-left: 5vw;
                     }
@@ -132,37 +120,45 @@
             }
 
             .accordion {
-
                 .accordion-item {
                     border: 0;
                     outline: none;
                     background-color: transparent;
                     
                     .accordion-header {
+                        svg {
+                            width: 8vw;
+
+                            path, line {
+                                stroke: $colorFont;
+                            }
+                        }
                         
                         .accordion-button {
                             display: flex;
+                            height: 15vw;
                             align-items: center;
                             background-color: transparent;
                             box-shadow: none;
                             padding: 0;
 
                             svg {
-                                path {
-                                    fill: $colorFont;
+                                path, line, circle {
+                                    stroke: $colorFont;
                                 }
                             }
                             
                             &:not(.collapsed) {
-                                color: $colorPrimaryLight;
-                                svg {
-                                    path {
-                                        fill: $colorPrimaryLight;
-                                    }
-                                }
+                                color: $colorFont;
 
                                 &::after {
-                                    background-image: url('../../../assets/collapse.svg')
+                                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+                                }
+
+                                svg {
+                                    path {
+                                        stroke: $colorFont;
+                                    }
                                 }
                             }
                             
@@ -177,10 +173,11 @@
                         .accordion-body {
                             height: 60vh;
                             overflow-y: scroll;
+                            padding: 0;
                             
 
                             .list-group {
-                                border-radius: 0;
+                                border-radius: 5vw;
 
                                 .list-group-item {
                                     border: 0;
@@ -196,21 +193,15 @@
                     }
                 }
 
-                .accordion-item + .accordion-item {
-                    margin-top: 5vw;
-                }
-            }
-
-            .disabled {
-                .accordion-item {
+                .disabled {
                     .accordion-header {
                         .accordion-button {
                             pointer-events: none;
                             color: #D4D4D4;
 
                             svg {
-                                path {
-                                    fill: #D4D4D4;
+                                path, line, circle {
+                                    stroke: #D4D4D4;
                                 }
                             }
 
@@ -221,6 +212,41 @@
                     }
                 }
 
+                .selected {
+                    .accordion-header {
+                        .accordion-button {
+                            color: $colorPrimaryLight;
+
+                            &::after {
+                                background-image: url('../../../assets/icons/collapse.svg')
+                            }
+
+                            svg {
+                                path, line, circle {
+                                    stroke: $colorPrimaryLight;
+                                }
+                            }
+                            
+                            &:not(.collapsed) {
+                                color: $colorFont;
+                                
+                                &::after {
+                                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+                                }
+
+                                svg {
+                                    path {
+                                        stroke: $colorFont;
+                                    }
+                                }
+                            }
+                            
+                            p {
+                                margin: 0 0 0 5vw;
+                            }
+                        }
+                    }
+                }
             }
 
             p {

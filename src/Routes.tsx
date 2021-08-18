@@ -16,7 +16,7 @@ export function Routes() {
     return(
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Login}/>
+                <Route exact path="/login" component={Login}/>
 
                 <MenuContextProvider>
                     {context?.user?.role === 'ADMIN' ? <AdminRoutes /> : <ClientRoutes />}

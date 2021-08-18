@@ -1,13 +1,14 @@
-@import '../../styles/global.scss';
+@import '../../assets/scss/global.scss';
 
 .nav-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 3vw 5vw;
+    height: 9vh;
 
     img {
-        width: 8vw;
+        width: 6vw;
         &:hover {
             cursor: pointer;
         }

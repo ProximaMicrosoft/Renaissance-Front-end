@@ -1,22 +1,24 @@
 import { Offcanvas, Tabs, Tab } from 'react-bootstrap';
 
-import { OffcanvasContent } from '../../../components/Offcanvas/OffcanvasContent/OffcanvasContent';
+import { MenuContent } from '../../../components/menu/menuContent';
+import NavBar from '../../../components/navBar';
 
 import { useMenu } from '../../../hooks/useMenu';
+import { useAuth } from '../../../hooks/useAuth';
 
-import user from '../../../assets/profile_user.svg';
-import condo from '../../../assets/profile_condo.svg';
-import cpf from '../../../assets/profile_cpf.svg';
-import born from '../../../assets/profile_calendar.svg';
-import email from '../../../assets/profile_email.svg';
-import password from '../../../assets/profile_password.svg';
-import phone from '../../../assets/profile_phone.svg';
+import {ReactComponent as UserIcon} from '../../../assets/icons/user.svg';
+import condo from '../../../assets/icons/condo.svg';
+import cpf from '../../../assets/icons/cpf.svg';
+import born from '../../../assets/icons/calendar_profile.svg';
+import email from '../../../assets/icons/email.svg';
+import password from '../../../assets/icons/password.svg';
+import phone from '../../../assets/icons/phone.svg';
 
 import './styles.scss';
-import NavBar from '../../../components/NavBar/NavBar';
 
 export function MyData() {  
     const menuContext = useMenu();
+    const authContext = useAuth();
 
     return(
         <div id="container">
@@ -25,17 +27,17 @@ export function MyData() {
             </header>
  
             <Tabs defaultActiveKey="my-data" id="uncontrolled-tab-example" className="mb-3">
-                <Tab eventKey="my-data" title="Meus dados">
+                <Tab eventKey="my-data" title="Meus dados" className=".nav-link active">
                     <div id="tab-content">
                         <ul className="disabled-inputs">
-                            <li>
-                                <img src={user} alt="Nome completo" />
-                                <h3>Antônio Guilherme do Nascimento Pereira</h3>
+                            <li className="user">
+                                <UserIcon />
+                                <h3>{authContext.user?.name}</h3>
                             </li>
 
                             <li>
                                 <img src={condo} alt="Condomínio" />
-                                <h3>Apt 40-B</h3>
+                                <h3>Apt {authContext.user?.numeroapartamento}</h3>
                             </li>
 
                             <li>
@@ -52,7 +54,7 @@ export function MyData() {
                         <ul className="editable-inputs">
                             <li>
                                 <img src={email} alt="E-mail" />
-                                <h3>antonioguilhermeinfo@gmail.com</h3>
+                                <h3>{authContext.user?.email}</h3>
                             </li>
 
                             <li>
@@ -70,7 +72,7 @@ export function MyData() {
             </Tabs>
             
             <Offcanvas show={menuContext.show} onHide={() => menuContext.setShow(false)} placement="end">
-                <OffcanvasContent />
+                <MenuContent />
             </Offcanvas>
 
         </div>

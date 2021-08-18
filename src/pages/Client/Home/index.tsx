@@ -1,23 +1,25 @@
 import { Offcanvas } from 'react-bootstrap';
 
-import { ButtonNavigation } from '../../../components/ButtonNavigation/ButtonNavigation';
-import { OffcanvasContent } from '../../../components/Offcanvas/OffcanvasContent/OffcanvasContent';
+import { ButtonNavigation } from '../../../components/buttonNavigation';
+import { MenuContent } from '../../../components/menu/menuContent';
+import NavBar from '../../../components/navBar';
 
 import { useAuth } from '../../../hooks/useAuth';
 import { useMenu } from '../../../hooks/useMenu';
 
-import myDataIcon from '../../../assets/user.svg';
-import reservesIcon from '../../../assets/calendar.svg';
-import documentsIcon from '../../../assets/documents.svg';
+import myDataIcon from '../../../assets/icons/user.svg';
+import reservesIcon from '../../../assets/icons/calendar.svg';
+import documentsIcon from '../../../assets/icons/documents.svg';
 
-import { getFirstName } from '../../../utils/getFirstName';
+import { getFirstName } from '../../../utils/name';
 
 import './styles.scss';
-import NavBar from '../../../components/NavBar/NavBar';
 
 export function Home() {       
     const authContext = useAuth();
     const menuContext = useMenu();
+
+    console.log(authContext.user.name)
 
     return( 
         <div id="container-home">
@@ -25,22 +27,21 @@ export function Home() {
                 <NavBar home/>
 
                 <div id="title">
-                    <h5>Bem-vindo, {getFirstName(authContext.user?.name)}</h5>
+                    <h5>Bem-vindo, {getFirstName(authContext.user.name)}</h5>
                 </div>
             </header>
 
             <main>      
-                <ButtonNavigation image={myDataIcon} title="Meus dados" path="/mydata"/>
+                <ButtonNavigation img={myDataIcon} title="Meus dados" path="/mydata"/>
 
-                <ButtonNavigation image={reservesIcon} title="Reservas" path="/reserves"/>
+                <ButtonNavigation img={reservesIcon} title="Reservas" path="/reserves"/>
 
-                <ButtonNavigation image={documentsIcon}title="Regras do condomínio" path="/rules"/>
+                <ButtonNavigation img={documentsIcon}title="Regras do condomínio" path="/rules"/>
             </main> 
  
             <Offcanvas show={menuContext.show} onHide={() => menuContext.setShow(false)} placement="end">
-                <OffcanvasContent />
+                <MenuContent />
             </Offcanvas>  
-
         </div>
     );
 }

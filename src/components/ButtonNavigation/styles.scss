@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../assets/scss/global.scss';
 
 #button-nav {
     display: flex;
@@ -24,7 +24,10 @@
 
     h3 {
         color: $colorPrimaryDark;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
         font-size: 8vw;
+        margin-bottom: 0;
     }
 }
 

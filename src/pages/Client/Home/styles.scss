@@ -1,4 +1,4 @@
-@import '../../../styles/global.scss';
+@import '../../../assets/scss/global.scss';
 
 #container-home {
     background-color: $colorPrimaryBackground;
@@ -17,31 +17,16 @@
         height: 18vh;
         box-shadow: 0 -5px 10px black;
 
-        #nav-icons {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            padding: 3vw 5vw;
-
-            img {
-                width: 8vw;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-
-            #return-icon {
-                visibility: hidden;
-            }
-        }
-
         #title {
             @include centralizeContent();
             padding: 3vw 5vw;
+            height: 9vh;
 
             h5 {
                 color: white;
                 font-weight: 300;
+                font-size: 5vw;
+                margin-bottom: 0;
             }
         }
     }
@@ -51,7 +36,12 @@
         max-height: 82vh;
         overflow-y: scroll;
     }
+}
 
+body {
+    .offcanvas {
+        width: 80%; 
+    }
 }
 
 @import "~bootstrap/scss/bootstrap";

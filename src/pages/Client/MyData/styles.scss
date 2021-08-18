@@ -1,4 +1,4 @@
-@import '../../../styles/global.scss';
+@import '../../../assets/scss/global.scss';
 
 #tab-content {
     display: flex;
@@ -12,12 +12,17 @@
         flex-direction: column;
         justify-content: space-between;
         margin-bottom: 20vw;
+        
         li {
             display: flex;
 
-            img {
+            img, svg {
                 width: 7vw;
                 margin-right: 4vw;
+
+                path {
+                    stroke: #494949;
+                }
             }
     
             h3 {
@@ -52,7 +57,7 @@
                 margin-bottom: 0;
                 font-size: 4.5vw;
                 display: flex;
-                align-items: center;
+                align-items: center; 
                 
                 color: $colorPrimaryDark;
             }

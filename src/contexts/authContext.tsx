@@ -1,17 +1,18 @@
 import { createContext, useState } from "react";
+import { getStorage } from "../utils/storage";
 
 interface UserContextProps {
-    user: UserProps | undefined;
-    setUser: React.Dispatch<React.SetStateAction<UserProps | undefined>>;
+    user: UserProps;
+    setUser: (user: UserProps) => void;
 }
 
-export const AuthContext = createContext<UserContextProps>({} as UserContextProps);
+export const AuthContext = createContext({} as UserContextProps);
 
 export function UserContextProvider({children}: JSX.ElementChildrenAttribute) {
-    const [user, setUser] = useState<UserProps>();
+    const [user, setUser] = useState<UserProps>(getStorage('userData'));
 
     return(
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, setUser }}> 
             {children}
         </AuthContext.Provider>
     );

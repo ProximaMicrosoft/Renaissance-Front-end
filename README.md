@@ -24,7 +24,6 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
 ### Protótipo
 <ul>
     <img src="https://cdn.worldvectorlogo.com/logos/figma-1.svg" height="30">
-    <p>Link do protótipo: <a href="https://www.figma.com/file/m2kd7e5Q595obgfMw0oyyB/Projeto-Renaissance?node-id=0%3A1 ">Figma</a></p>
 </ul>
 
 ### Front-end
@@ -58,7 +57,6 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
 ### Diagrama de processos
 <ul>
     <img src="https://store-images.s-microsoft.com/image/apps.14142.2ec57164-ba5b-42ee-8253-ade72ca74c8d.e8efbcc8-e27f-4682-9321-eb111eb3bc68.950e1c22-0dd9-4079-807b-145ecdb6df9c.png" height="30">
-    <p>Link do diagrama: <a href="https://drive.google.com/file/d/1yJaVmnmJD9mrgcHU5X1R0mkqc7WP1q-r/view">Draw.io</a></p>
 </ul>
 
 ### Deploy
@@ -67,23 +65,16 @@ A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que es
     <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQGmNZMDOpmMQg/company-logo_200_200/0/1519905610801?e=2159024400&v=beta&t=D5lu9rTbQ_aW1ubme8GIq_QhKIm8WTiXTtoBlEHPcA8" height="30">
 </ul>
 
-## 🚧 MAPEAMENTO DE FUNCIONALIDADES
+## 🚧 MAPEAMENTO DE FUNCIONALIDADES/STATUS DO PROJETO
 
-| Requisitos | Descrição | Função | Arquivo | Status
-| --- | --- | --- | --- | --- |
-| RF0001 | Ao realizar login, o sistema deve realizar uma separação entre quem são os administradores e quem são os moradores, assim, enquanto que as funcionalidades dos moradores serão aspectos particulares, as funcionalidades dos administradores será para observação de aspectos gerais. | handleLogin() | <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Login/index.tsx">index.tsx</a> | <li align="center">- [x] </li> |
-| RF0002 | Cadastrar usuários. Somente os administradores deverão fazer o cadastro de usuários contendo diversos dados como nome, foto, cpf, email, veículos, senha, etc. | - | - | <li align="center">- [ ] </li> |
-| RF0003 | Reserva de espaço. Os moradores podem ver quais dias e horários estão disponíveis e indisponíveis. Além disso, podem excluir as reservas. | handleCreateReserve() | <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Reserves/index.tsx">index.tsx</a> | <li align="center">- [x] </li> |
-| RF0004 | Registro de visitantes. Os moradores podem avisar qual é o visitante está chegando no condomínio informando nome, tipo(entregador, amigo, …), horário, foto(opcional). | - | - | <li align="center">- [ ] </li> |
-| RF0005 | Achados e Perdidos. Os moradores podem cadastrar algum item perdido pelo condomínio adicionando uma descrição e uma foto(opcional). Posteriormente, pode-se modificar o status do item caso já tenha encontrado. | - | - | <li align="center">- [ ] </li> | 
-| RF0006 | Meus dados. Os dados informados no cadastro do administrador poderão ser consultados, porém, somente alguns podem ser editados, como email, senha, foto. Quaisquer alterações posteriores devem ser relatadas à administração. | useAuth() | <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/MyData/index.tsx">index.tsx</a> | <li align="center">- [x] </li> |
-| RF0007 | Regras do condomínio. Os moradores poderão observar quais são as regras do condomínio e somente a administração poderá modificar. | - | - | <li align="center">- [ ] </li> |
+- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Login/index.tsx">Autenticação</a>
+- [ ] Responsividade
+- [ ] Cadastro de morador
+- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Home/Reserves/index.tsx">Reserva de espaço</a>
+- [x] <a href="https://github.com/ProximaMicrosoft/Renaissance-Front-end/blob/master/src/pages/Client/Home/Profile/MyData/index.tsx">Meus dados</a>
+- [ ] Regras do condomínio
 
 ## ✅ COMO UTILIZAR?
-Utilize as credenciais a seguir para entrar como morador:
-- email: antonioguilhermeinfo@gmail.com
-- senha: ####56567687879
-
 Para utilizar a aplicação <a href="https://renaissance-theta.vercel.app/">clique aqui</a>
 <h5>OBS. Utilize o navegador Chrome ou Safari para poder utilizar como PWA</h5>
 

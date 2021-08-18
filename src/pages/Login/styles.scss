@@ -1,7 +1,9 @@
-@import '../../styles/global.scss';
+@import '../../assets/scss/global.scss';
 
 #container-login {
     height: 100vh;
+    min-height: 100vh;
+    position: fixed;
     background-color: $colorPrimaryBackground;
 
     #title_login {
@@ -121,21 +123,6 @@
                 flex-direction: column;
                 @include centralizeContent();
                 height: 25%;
-
-                button {
-                    width: 100%;
-                    height: 13vw;
-                    border: 0;
-                    border-radius: 2.5vw;
-                    background-color: $colorPrimaryDark;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 5vw;
-
-                    &:active {
-                        background-color: $colorPrimaryLight;
-                    }
-                }
 
                 a {
                     color: $colorFont;

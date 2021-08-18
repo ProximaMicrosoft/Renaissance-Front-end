@@ -1,0 +1,16 @@
+@import '../../assets/scss/global.scss';
+
+.submitButton {
+    width: 100%;
+    height: 13vw;
+    border: 0;
+    border-radius: 2.5vw;
+    background-color: $colorPrimaryDark;
+    color: white;
+    font-weight: bold;
+    font-size: 5vw;
+
+    &:active {
+        background-color: $colorPrimaryLight;
+    }
+}

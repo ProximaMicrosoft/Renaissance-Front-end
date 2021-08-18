@@ -1,7 +1,7 @@
 import { UserContextProvider } from './contexts/authContext';
 import { Routes } from './Routes';
 
-import './styles/global.scss';
+import './assets/scss/global.scss';
 
 export function App() {
 	return (

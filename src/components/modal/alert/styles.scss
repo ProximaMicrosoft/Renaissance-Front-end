@@ -1,0 +1,44 @@
+@import '../../../assets/scss/global.scss';
+
+.modal {
+    .modal-dialog {
+        @include centralizeContent();
+
+        .modal-content {
+            width: 90vw;
+            height: 50vh;
+            border-radius: 5vw;
+
+            .modal-header {
+                padding: 3vw 4vw;
+                border-radius: 5vw 5vw 0 0;
+                background-color: $colorPrimaryLight;
+                display: flex;
+                justify-content: flex-end;
+
+                .btn-close {
+                    background: transparent url("../../../assets/icons/close.svg") no-repeat center;
+                }
+            }
+
+            .modal-body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 0;
+
+                h3 {
+                    font-size: 7vw;
+                    width: 80%;
+                    text-align: center;
+                    color: $colorFont;
+                }
+
+                img {
+                    width: 18%;
+                }
+            }
+        }
+    }
+}

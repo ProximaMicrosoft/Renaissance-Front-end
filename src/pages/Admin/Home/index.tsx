@@ -1,15 +1,15 @@
 import { Offcanvas } from 'react-bootstrap';
 
-import { ButtonNavigation } from '../../../components/ButtonNavigation/ButtonNavigation';
-import { OffcanvasContent } from '../../../components/Offcanvas/OffcanvasContent/OffcanvasContent';
+import { ButtonNavigation } from '../../../components/buttonNavigation';
 
 import { useMenu } from '../../../hooks/useMenu';
 
-import hamburguerIcon from '../../../assets/hamburguer.svg';
-import returnIcon from '../../../assets/arrow-left.svg';
-import icon from '../../../assets/user.svg';
+import hamburguerIcon from '../../../assets/icons/hamburguer.svg';
+import returnIcon from '../../../assets/icons/arrow-left.svg';
+import icon from '../../../assets/icons/user.svg';
 
 import './styles.scss';
+import { MenuContent } from '../../../components/menu/menuContent';
 
 export function AdminHome() {       
     const menuContext = useMenu();
@@ -30,19 +30,19 @@ export function AdminHome() {
             </header>
 
             <main>
-                <ButtonNavigation image={icon} title="Cadastrar condômino" path="/register"/>
+                <ButtonNavigation img={icon} title="Cadastrar condômino" path="/register"/>
 
-                <ButtonNavigation image={icon} title="Reservas" path="/reserves"/>
+                <ButtonNavigation img={icon} title="Reservas" path="/reserves"/>
 
-                <ButtonNavigation image={icon}title="Visitantes" path="/visitors"/>
+                <ButtonNavigation img={icon}title="Visitantes" path="/visitors"/>
 
-                <ButtonNavigation image={icon} title="Achados e Perdidos" path="/lostandfound"/>
+                <ButtonNavigation img={icon} title="Achados e Perdidos" path="/lostandfound"/>
 
-                <ButtonNavigation image={icon} title="Regras do condomínio" path="/rules"/>
+                <ButtonNavigation img={icon} title="Regras do condomínio" path="/rules"/>
             </main> 
  
             <Offcanvas show={menuContext.show} onHide={() => menuContext.setShow(false)} placement="end">
-                <OffcanvasContent />
+                <MenuContent />
             </Offcanvas>
 
         </div>
