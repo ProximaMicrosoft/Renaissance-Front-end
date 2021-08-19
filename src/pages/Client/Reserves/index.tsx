@@ -20,6 +20,7 @@ import './styles.scss';
 import './Calendar.scss';
 import { rules } from '../../../constants/places';
 import { ReserveItem } from './components/reserveItem';
+import { AlertModal } from '../../../components/modal/alert';
 
 export function Reserves() {  
     const menuContext = useMenu();
@@ -33,6 +34,7 @@ export function Reserves() {
     const [reservesList, setReservesList] = useState<ReactNode[]>([])
     const [collapse, setCollapse] = useState("");
     const [loading, setLoading] = useState(false);
+    const [confirmReserveModal, setConfirmReserveModal] = useState(false);
     
     useEffect(() => {
         const value = listingUserReserves(authContext.user.id);
@@ -43,6 +45,10 @@ export function Reserves() {
     useEffect(() => {
         placeTarget!== 0 && setScheduleList(listingSchedule(placeTarget));
     }, [placeTarget])
+
+    useEffect(() => {
+        
+    }, [])
 
     function formatDate(date: number) {
         const dates = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
@@ -111,7 +117,7 @@ export function Reserves() {
 
         createReserve(dateTarget, scheduleTarget, placeTarget, authContext.user.id)
             .then(() => {
-                window.alert('Reserva realizada com sucesso');
+                setConfirmReserveModal(true);
                 setLoading(false);
             })
             .catch(() => {
@@ -190,7 +196,7 @@ export function Reserves() {
                 <Tab eventKey="my-reserves" title="Minhas reservas">
                     <div id="tab-content">
                         <ul className="listing">
-                            {listingUserReserves(authContext.user.id)}
+                            {reservesList}
                         </ul>
                     </div>
                 </Tab>
@@ -200,6 +206,14 @@ export function Reserves() {
             <Offcanvas show={menuContext.show} onHide={() => menuContext.setShow(false)} placement="end">
                 <MenuContent />
             </Offcanvas>
+
+            <AlertModal 
+                isCheck={true}
+                show={confirmReserveModal}
+                onHide={() => setConfirmReserveModal(false)}
+                title="Reserva confirmada!"
+                description="Sua reserva foi confirmada com sucesso!"
+            />
 
         </div>
     );

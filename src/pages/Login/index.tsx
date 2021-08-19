@@ -10,11 +10,12 @@ import logoIcon from '../../assets/icons/logo.svg';
 import eyeIcon from '../../assets/icons/eye.svg';
 import eyeClosedIcon from '../../assets/icons/eye-off.svg';
 
-import { login } from '../../services/user';
+import { login, sendLinkToResetPassword } from '../../services/user';
 
 import { getStorage, saveStorage } from '../../utils/storage';
 
 import './styles.scss';
+import { InputModal } from '../../components/modal/input';
 
 
 export function Login() {
@@ -27,7 +28,9 @@ export function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [lightPasswordField, setLightPasswordField] = useState(false);
-    const [modalShow, setModalShow] = useState(false);
+    const [forgottenPasswordModalShow, setForgottenPasswordModalShow] = useState(false);
+    const [registerModalShow, setRegisterModalShow] = useState(false);
+    const [linkSent, setLinkSent] = useState(false);
 
     // verifica se o usuário já estava logado
     useEffect(() => {
@@ -58,6 +61,15 @@ export function Login() {
             })
     }    
 
+    function handleForgottenPassword(e: FormEvent) {
+        e.preventDefault();
+
+        sendLinkToResetPassword(email)
+
+        setForgottenPasswordModalShow(false);
+        setLinkSent(true);
+    }
+
     return(
         <div id="container-login">
             <div id="title_login">
@@ -81,7 +93,7 @@ export function Login() {
                         <div className={`password-field ${lightPasswordField ? 'light' : ''}`}>
                             <input 
                                 type={showPassword ? 'text' : 'password'}
-                                 name="password" 
+                                name="password" 
                                 id="password" 
                                 autoComplete="current-password"
                                 placeholder="Senha"
@@ -118,24 +130,59 @@ export function Login() {
                     <div id="content-bottom">
                         <ButtonSubmit loading={isLoading} text="Entrar"/>
 
-                        <Link to="/a">Esqueci minha senha</Link>
+                        <button 
+                            type="button" className="modal-button"
+                            onClick={() => setForgottenPasswordModalShow(true)}
+                        >Esqueci minha senha</button>
                     </div>
                  
                     <div id="unregister">
-                        Não possui cadastro?<a type="button" onClick={() => setModalShow(true)}>Clique Aqui</a>
+                        Não possui cadastro?
+                        <button 
+                            type="button" 
+                            className="modal-button" 
+                            onClick={() => setRegisterModalShow(true)}
+                        >
+                            Clique Aqui
+                        </button>
                     </div>
                 </form>
             </main>
 
-            <AlertModal 
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+            <InputModal 
+                show={forgottenPasswordModalShow}
+                onHide={() => setForgottenPasswordModalShow(false)}
+                title="Recuperar senha"
+                description="Um link para recuperar sua senha será enviado para o seu e-mail de cadastro atual"
             >
-                <h3>Fale com o administrador do seu condomínio para realizar seu cadastro</h3>
-                
-            </AlertModal>
-        </div>
+                <form onSubmit={handleForgottenPassword}>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        value={email} 
+                        placeholder="E-mail de cadastro"
+                        onChange={e => setEmail(e.currentTarget.value)}
+                        />
+                    <button type="submit">Enviar e-mail</button>
+                </form>
+            </InputModal>
 
-        
+            <AlertModal 
+                isCheck={false}
+                show={registerModalShow}
+                onHide={() => setRegisterModalShow(false)}
+                title="Fale com o adm!"
+                description="Para realizar seu cadastro fale com o administrador do seu condomínio"
+            />
+
+            <AlertModal 
+                isCheck={true}
+                show={linkSent}
+                onHide={() => setLinkSent(false)}
+                title="Link enviado"
+                description="Verifique seu e-mail para alterar sua senha atual"
+            />
+        </div>
     );
 }

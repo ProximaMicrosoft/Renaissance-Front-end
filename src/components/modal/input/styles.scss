@@ -1,0 +1,94 @@
+ @import '../../../assets/scss/global.scss';
+
+.modal {
+    .modal-dialog {
+        @include centralizeContent();
+
+        .modal-content {
+            width: 85vw;
+            height: max-content;
+            border-radius: 5vw;
+
+            .modal-header {
+                padding: 3vw 4vw;
+                border-radius: 5vw 5vw 0 0;
+                background-color: $colorPrimaryLight;
+                display: flex;
+                justify-content: flex-end;
+
+                .btn-close {
+                    background: transparent url("../../../assets/icons/close.svg") no-repeat center;
+                }
+            }
+
+            .modal-body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 0;
+
+                h1 {
+                    font-size: 8.5vw;
+                    color: $colorFont;
+                }
+
+                h3 {
+                    font-size: 5vw;
+                    width: 80%;
+                    text-align: center;
+                    color: $colorFont;
+                }
+
+                img {
+                    width: 18%;
+                }
+            }
+
+            .modal-footer {
+                @include centralizeContent();
+                border-top: 0;
+                height: 50%;
+
+                form {
+                    width: 100%;
+                    height: 12vh;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    input, button {
+                        width: 80%;
+                    }
+
+                    input {
+                        border: 0;
+                        border-bottom: 1px solid rgb(204, 204, 204);
+                        background-color: transparent;
+                        
+                        &:focus {
+                            border-bottom: 1px solid $colorPrimaryDark;
+                            color: $colorPrimaryDark;
+                        }
+
+                        &::placeholder {
+                            text-align: center;
+                        }
+                    }
+
+                    button {
+                        font-size: 7vw;
+                        font-weight: 600;
+                        color: $colorPrimaryDark;
+                        font-family: 'Roboto', sans-serif;
+                        background-color: transparent;
+                        border: 0;
+                        
+                    }
+                }
+            }
+        }
+    }
+}

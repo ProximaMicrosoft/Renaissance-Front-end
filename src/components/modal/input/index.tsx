@@ -1,17 +1,15 @@
+import { ReactNode } from 'react';
 import { Modal } from 'react-bootstrap';
 import { AbstractModalHeaderProps } from 'react-bootstrap/esm/AbstractModalHeader';
-import atemptIcon from '../../../assets/icons/atempt.svg';
-import checkIcon from '../../../assets/icons/check.svg';
 import './styles.scss';
 
-interface AlertModalProps extends AbstractModalHeaderProps {
-    isCheck: boolean;
+interface AlertModalProps extends AbstractModalHeaderProps  {
     show: boolean;
     title: string;
     description: string;
 }
 
-export function AlertModal(props: AlertModalProps) {
+export function InputModal(props: AlertModalProps) {
     return ( 
         <Modal
             {...props}
@@ -24,9 +22,11 @@ export function AlertModal(props: AlertModalProps) {
             <Modal.Body>
                 <h1>{props.title}</h1>
                 <h3>{props.description}</h3>
-                <img src={props.isCheck ? checkIcon : atemptIcon} alt="Atenção" />
             </Modal.Body>
 
+            <Modal.Footer>
+                {props.children}
+            </Modal.Footer>
         </Modal>
-    );
+    ); 
 }

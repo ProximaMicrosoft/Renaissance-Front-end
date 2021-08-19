@@ -124,11 +124,13 @@
                 @include centralizeContent();
                 height: 25%;
 
-                a {
+                .modal-button {
                     color: $colorFont;
-                    margin-top: 5px;
-                    text-decoration: none;
-                    font-size: 5vw;
+                    margin: 0;
+                    font-size: 4vw;
+                    margin-top: 10px;
+                    border: 0;
+                    background-color: transparent;
 
                     &:hover {
                         color: $colorPrimaryLight;
@@ -145,11 +147,13 @@
                 height: 10%;
 
 
-                a {
+                .modal-button {
                     color: $colorFont;
                     margin: 0;
                     font-size: 4vw;
                     margin-left: 3px;
+                    border: 0;
+                    background-color: transparent;
 
                     &:hover {
                         color: $colorPrimaryLight;

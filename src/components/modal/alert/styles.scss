@@ -1,12 +1,12 @@
-@import '../../../assets/scss/global.scss';
+ @import '../../../assets/scss/global.scss';
 
 .modal {
     .modal-dialog {
         @include centralizeContent();
 
         .modal-content {
-            width: 90vw;
-            height: 50vh;
+            width: 85vw;
+            height: 45vh;
             border-radius: 5vw;
 
             .modal-header {
@@ -25,11 +25,16 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
                 border-bottom: 0;
 
+                h1 {
+                    font-size: 8.5vw;
+                    color: $colorFont;
+                }
+
                 h3 {
-                    font-size: 7vw;
+                    font-size: 5vw;
                     width: 80%;
                     text-align: center;
                     color: $colorFont;
