@@ -14,6 +14,10 @@ export async function login(email: string, password: string) {
     return value;
 }
 
+export async function sendLinkToResetPassword(email: string) {
+    return
+}
+
 export async function createUser(name: string, email: string, password: string, numerotelefone: string, numeroapartamento: 70) {
     return await api.post('/usuario', {
         name,

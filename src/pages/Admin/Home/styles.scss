@@ -1,13 +1,14 @@
 @import '../../../assets/scss/global.scss';
 
-#container {
+#container-home {
+    background-color: $colorPrimaryBackground;
     display: flex;
     width: 100%;
     position: relative; //mudar p/ fixed 
     flex-direction: column;
 
     header {
-        background-color: #1EACE8;
+        background-color: $colorPrimaryDark;
         position: sticky;
         top: 0;
         left: 0;
@@ -16,30 +17,16 @@
         height: 18vh;
         box-shadow: 0 -5px 10px black;
 
-        #nav-icons {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            padding: 3vw 5vw;
-
-            img {
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-
-            #return-icon {
-                visibility: hidden;
-            }
-        }
-
         #title {
             @include centralizeContent();
             padding: 3vw 5vw;
+            height: 9vh;
 
             h5 {
                 color: white;
-                font-weight: 400;
+                font-weight: 300;
+                font-size: 5vw;
+                margin-bottom: 0;
             }
         }
     }
@@ -48,6 +35,12 @@
         padding: 8vw 5vw;
         max-height: 82vh;
         overflow-y: scroll;
+    }
+}
+
+body {
+    .offcanvas {
+        width: 80%; 
     }
 }
 
