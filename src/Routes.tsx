@@ -8,6 +8,7 @@ import { AdminRoutes } from "./routes/AdminRoutes";
 import { ClientRoutes } from "./routes/ClientRoutes";
 import { Login } from "./pages/Login";
 import { PageNotFound } from "./pages/NotFound";
+import { LogoutContextProvider } from "./contexts/logoutContext";
 
 
 export function Routes() {
@@ -19,7 +20,9 @@ export function Routes() {
                 <Route exact path="/login" component={Login}/>
 
                 <MenuContextProvider>
-                    {context?.user?.role === 'ADMIN' ? <AdminRoutes /> : <ClientRoutes />}
+                    <LogoutContextProvider>
+                        {context?.user?.role === 'ADMIN' ? <AdminRoutes /> : <ClientRoutes />}
+                    </LogoutContextProvider>
                 </MenuContextProvider>
 
                 <Route path="/" component={PageNotFound} />

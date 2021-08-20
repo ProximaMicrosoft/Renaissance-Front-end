@@ -14,6 +14,7 @@ export const rules = [ {
     inicialHour: 5,
     finalHour: 23,
     reservesLimit: 2,
+    rule: "- Não permanecer no espaço após o término do horário reservado",
     allDay: false
 }, {
     idLocal: 2,
@@ -22,6 +23,7 @@ export const rules = [ {
     inicialHour: 6,
     finalHour: 22, 
     reservesLimit: 3,
+    rule: "- Não permanecer no espaço após o término do horário reservado",
     allDay: false
 }, {
     idLocal: 4,
@@ -30,6 +32,7 @@ export const rules = [ {
     inicialHour: 7,
     finalHour: 22,
     reservesLimit: 1,
+    rule: "- Não permanecer no espaço após o término do horário reservado",
     allDay: false
 }, {
     idLocal: 5,
@@ -38,6 +41,7 @@ export const rules = [ {
     inicialHour: 7,
     finalHour: 22,
     reservesLimit: 1,
+    rule: "- Não permanecer no espaço após o término do horário reservado",
     allDay: false
 }, {
     idLocal: 6,
@@ -46,6 +50,7 @@ export const rules = [ {
     inicialHour: 6,
     finalHour: 23,
     reservesLimit: 1,
+    rule: "- Não permanecer no espaço após o término do horário reservado",
     allDay: false
 }, {
     idLocal: 3,
@@ -54,6 +59,7 @@ export const rules = [ {
     inicialHour: 7,
     finalHour: 22,
     reservesLimit: 1,
+    rule: "- Não permanecer no espaço após o término do horário reservado",
     allDay: false,
 }, {
     idLocal: 7,
@@ -62,6 +68,7 @@ export const rules = [ {
     inicialHour: 8,
     finalHour: 22,
     reservesLimit: 1,
+    rule: "- Uma taxa de R$50,00 será cobrada no boleto do condomínio\n- Máximo de 20 pessoas",
     allDay: true
 }, {
     idLocal: 8,
@@ -70,6 +77,7 @@ export const rules = [ {
     inicialHour: 8,
     finalHour: 23,
     reservesLimit: 1,
+    rule: "- Uma taxa de R$50,00 será cobrada no boleto do condomínio\n- Máximo de 20 pessoas",
     allDay: true
 }, {
     idLocal: 9,
@@ -78,6 +86,7 @@ export const rules = [ {
     inicialHour: 8,
     finalHour: 23,
     reservesLimit: 1,
+    rule: "- Uma taxa de R$50,00 será cobrada no boleto do condomínio\n- Máximo de 20 pessoas",
     allDay: true
 }, {
     idLocal: 10,
@@ -86,5 +95,6 @@ export const rules = [ {
     inicialHour: 8,
     finalHour: 23,
     reservesLimit: 1,
+    rule: "- Uma taxa de R$50,00 será cobrada no boleto do condomínio\n- Máximo de 20 pessoas",
     allDay: true
 } ]

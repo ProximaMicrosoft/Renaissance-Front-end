@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 interface MenuContextProps {
     show: boolean;
-    setShow: React.Dispatch<React.SetStateAction<boolean>>;
+    setShow: (value: boolean) => void;
 }
 
 export const MenuContext = createContext<MenuContextProps>({} as MenuContextProps);

@@ -1,12 +1,10 @@
 import { FormEvent, ReactNode, useEffect, useState } from 'react';
-import { Offcanvas, Tabs, Tab, Accordion, ListGroup, Spinner } from 'react-bootstrap';
+import { Tabs, Tab, Accordion, ListGroup, Spinner } from 'react-bootstrap';
 import Calendar from 'react-calendar';
 import classnames from 'classnames';
 
-import { MenuContent } from '../../../components/menu/menuContent';
 import NavBar from '../../../components/navBar';
  
-import { useMenu } from '../../../hooks/useMenu';
 import { useAuth } from '../../../hooks/useAuth';
 
 import {ReactComponent as CalendarIcon} from '../../../assets/icons/calendar_2.svg';
@@ -21,10 +19,13 @@ import './Calendar.scss';
 import { rules } from '../../../constants/places';
 import { ReserveItem } from './components/reserveItem';
 import { AlertModal } from '../../../components/modal/alert';
+import { Menu } from '../../../components/menu';
+import { useDeleteReserve } from '../../../hooks/useDeleteReserve';
+import { ConfirmModal } from '../../../components/modal/confirm';
 
 export function Reserves() {  
-    const menuContext = useMenu();
     const authContext = useAuth();
+    const deleteReserveContext = useDeleteReserve();
     const dateToday = new Date();
 
     const [placeTarget, setPlaceTarget] = useState(0);
@@ -35,12 +36,13 @@ export function Reserves() {
     const [collapse, setCollapse] = useState("");
     const [loading, setLoading] = useState(false);
     const [confirmReserveModal, setConfirmReserveModal] = useState(false);
+    // const [excludedReserveModal, setExcludedReserveModal] = useState(false);
+
     
     useEffect(() => {
-        const value = listingUserReserves(authContext.user.id);
-        setReservesList(value)
+        listingUserReserves(authContext.user.id);
          // eslint-disable-next-line
-    }, [loading])
+    }, [])
 
     useEffect(() => {
         placeTarget!== 0 && setScheduleList(listingSchedule(placeTarget));
@@ -62,8 +64,8 @@ export function Reserves() {
             aux.push(
                 <button 
                     type="button" 
-                    className={`space-button ${placeTarget === i+1 && 'selected'}`} 
-                    onClick={() => setPlaceTarget(i+1)}
+                    className={`space-button ${placeTarget === rules[i].idLocal && 'selected'}`} 
+                    onClick={() => setPlaceTarget(rules[i].idLocal)}
                 >
                     {rules[i].iconLocal}
                     <h3>{rules[i].nameLocal}</h3>
@@ -75,7 +77,7 @@ export function Reserves() {
     }
 
     function listingSchedule(placeId: number) {
-        const PLACE_INDEX = placeId-1;
+        const PLACE_INDEX = rules.map((value) => value.idLocal === placeId).indexOf(true)
         let aux: ReactNode[] = [];
         
         for(let i = rules[PLACE_INDEX].inicialHour; i < rules[PLACE_INDEX].finalHour; i++) {
@@ -99,7 +101,7 @@ export function Reserves() {
                     aux.push(
                         <ReserveItem 
                             reserveId={RESERVES[i].id} 
-                            placeId={RESERVES[i].espacos_id-1} 
+                            placeId={RESERVES[i].espacos_id} 
                             data={RESERVES[i].data} 
                             schedule={RESERVES[i].horario}
                         />
@@ -107,8 +109,10 @@ export function Reserves() {
                 }
             })
     
-        return aux;
+        setReservesList(aux);
     }
+
+    
 
     function handleCreateReserve(e: FormEvent) {
         e.preventDefault();
@@ -118,6 +122,7 @@ export function Reserves() {
         createReserve(dateTarget, scheduleTarget, placeTarget, authContext.user.id)
             .then(() => {
                 setConfirmReserveModal(true);
+                listingUserReserves(authContext.user.id);
                 setLoading(false);
             })
             .catch(() => {
@@ -184,7 +189,7 @@ export function Reserves() {
                                 </Accordion.Item>
                             </Accordion>
 
-                            <p className={!placeTarget ? "hidden" : "showMessage"}>Algum aviso aleatória que possa ter nesse lugar sobre algumas regras básicas da academia, regras principais.</p>
+                            <p className={!placeTarget ? "hidden" : "showMessage"}>{rules[placeTarget].rule}</p>
 
                             <button disabled={!scheduleTarget} type="submit" id="confirm">
                                 {loading ? <Spinner animation="border" variant="light" /> : "Confirmar reserva"}
@@ -203,9 +208,7 @@ export function Reserves() {
             </Tabs>
             
  
-            <Offcanvas show={menuContext.show} onHide={() => menuContext.setShow(false)} placement="end">
-                <MenuContent />
-            </Offcanvas>
+            <Menu />
 
             <AlertModal 
                 isCheck={true}
@@ -215,6 +218,28 @@ export function Reserves() {
                 description="Sua reserva foi confirmada com sucesso!"
             />
 
+            <ConfirmModal 
+                show={deleteReserveContext.show}
+                onHide={() => deleteReserveContext.setShow(false)}
+                title="Deseja excluir sua reserva?"
+                description="Se desejar, você poderá refazer a reserva excluída."
+            >
+                <button className="btn-confirm" type="button" onClick={() => deleteReserveContext.setShow(false)}>
+                    Não
+                </button>
+
+                <button className="btn-confirm yes" type="button" onClick={() => deleteReserveContext.handleDeleteReserve(deleteReserveContext.reserveId)}>
+                    Sim
+                </button>
+            </ConfirmModal>
+
+            {/* <AlertModal 
+                isCheck={true}
+                show={excludedReserveModal}
+                onHide={() => setConfirmReserveModal(false)}
+                title="Reserva excluída!"
+                description="Sua reserva foi excluída com sucesso!"
+            /> */}
         </div>
     );
 }

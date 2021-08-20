@@ -1,0 +1,71 @@
+ @import '../../../assets/scss/global.scss';
+
+.modal {
+    .modal-dialog {
+        @include centralizeContent();
+
+        .modal-content {
+            width: 85vw;
+            height: 45vh;
+            border-radius: 5vw;
+
+            .modal-header {
+                padding: 3vw 4vw;
+                border-radius: 5vw 5vw 0 0;
+                background-color: $colorPrimaryLight;
+                display: flex;
+                justify-content: flex-end;
+
+                .btn-close {
+                    background: transparent url("../../../assets/icons/close.svg") no-repeat center;
+                }
+            }
+
+            .modal-body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 0;
+
+                h1 {
+                    text-align: center;
+                    font-size: 8.5vw;
+                    color: $colorFont;
+                }
+
+                h3 {
+                    font-size: 5vw;
+                    width: 80%;
+                    text-align: center;
+                    color: $colorFont;
+                }
+
+                img {
+                    width: 18%;
+                }
+            }
+
+            .confirm-modal-footer {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 1rem;
+
+                .btn-confirm {
+                    background-color: aqua;
+                    position: relative;
+                    width: 45%;
+                    font-size: 8vw;
+                    background-color: transparent;
+                    border: 0;
+                    color: $colorPrimaryDark;
+                }
+                
+                .yes {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
