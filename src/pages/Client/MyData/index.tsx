@@ -1,9 +1,11 @@
-import { Offcanvas, Tabs, Tab } from 'react-bootstrap';
+import { FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import {  Tabs, Tab } from 'react-bootstrap';
 
-import { MenuContent } from '../../../components/menu/menuContent';
 import NavBar from '../../../components/navBar';
+import { Menu } from '../../../components/menu';
+import { InputModal } from '../../../components/modal/input';
 
-import { useMenu } from '../../../hooks/useMenu';
 import { useAuth } from '../../../hooks/useAuth';
 
 import {ReactComponent as UserIcon} from '../../../assets/icons/user.svg';
@@ -11,14 +13,26 @@ import condo from '../../../assets/icons/condo.svg';
 import cpf from '../../../assets/icons/cpf.svg';
 import born from '../../../assets/icons/calendar_profile.svg';
 import email from '../../../assets/icons/email.svg';
-import password from '../../../assets/icons/password.svg';
+import passwordIcon from '../../../assets/icons/password.svg';
 import phone from '../../../assets/icons/phone.svg';
 
 import './styles.scss';
 
+
 export function MyData() {  
-    const menuContext = useMenu();
     const authContext = useAuth();
+    const history = useHistory();
+    const [emailModal, setEmailModal] = useState(false);
+    const [password, setPassword] = useState('');
+
+    function confirmPasswordToChangeEmail(e: FormEvent) {
+        e.preventDefault();
+    
+        if(authContext.user.password === password) {
+            setEmailModal(false);
+            history.push('/change-email')
+        }
+    }
 
     return(
         <div id="container">
@@ -52,13 +66,13 @@ export function MyData() {
                         </ul>
 
                         <ul className="editable-inputs">
-                            <li>
+                            <li onClick={() => setEmailModal(true)}>
                                 <img src={email} alt="E-mail" />
                                 <h3>{authContext.user?.email}</h3>
                             </li>
 
                             <li>
-                                <img src={password} alt="Senha" />
+                                <img src={passwordIcon} alt="Senha" />
                                 <h3>**********</h3>
                             </li>
 
@@ -71,10 +85,27 @@ export function MyData() {
                 </Tab>
             </Tabs>
             
-            <Offcanvas show={menuContext.show} onHide={() => menuContext.setShow(false)} placement="end">
-                <MenuContent />
-            </Offcanvas>
+            <Menu />
 
+            <InputModal 
+                show={emailModal}
+                onHide={() => setEmailModal(false)}
+                title="Alterar e-mail"
+                description="Confirme sua senha para alterar o seu e-mail de cadastro."
+            >
+                <form onSubmit={confirmPasswordToChangeEmail}>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password" 
+                        value={password}
+                        onChange={e => setPassword(e.currentTarget.value)}
+                        placeholder="Senha atual aqui"
+                        
+                        />
+                    <button type="submit">Confirmar senha</button>
+                </form>
+            </InputModal>
         </div>
     );
 }

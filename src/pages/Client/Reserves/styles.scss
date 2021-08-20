@@ -66,13 +66,18 @@
                 width: 100vw;
                 position: relative;
                 left: -5vw;
-                overflow-x: scroll; 
+                overflow-x: scroll;
+                
+                &::-webkit-scrollbar {
+                    display: none;
+                }
 
                 #list-space {
                     width: max-content;
                     display: flex;
                     flex-direction: row;
                     padding: 0 5vw;
+                    
 
                     .space-button {
                         cursor: pointer;

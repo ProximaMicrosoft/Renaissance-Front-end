@@ -15,10 +15,12 @@
         
         li {
             display: flex;
+            align-items: center;
+
 
             img, svg {
                 width: 7vw;
-                margin-right: 4vw;
+                margin-right: 5vw;
 
                 path {
                     stroke: #494949;

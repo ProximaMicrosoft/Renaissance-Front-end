@@ -1,8 +1,7 @@
 import trashIcon from '../../../../../assets/icons/trash.svg';
 
 import { rules } from '../../../../../constants/places';
-
-import { deleteReserve } from '../../../../../services/reserves';
+import { useDeleteReserve } from '../../../../../hooks/useDeleteReserve';
 
 import './styles.scss';
 
@@ -15,10 +14,12 @@ type ReserveitemProps = {
 }
 
 export function ReserveItem(props: ReserveitemProps) {
-    const PLACE_INDEX = props.placeId-1;
+    const PLACE_INDEX = rules.map((v) => v.idLocal === props.placeId).indexOf(true);
+    const deleteReserveContext = useDeleteReserve();    
 
-    function handleDeleteReserve() {
-        deleteReserve(props.reserveId).then(() => window.alert("Reserva excluída com sucesso"))
+    function openModalForDeletion() {
+        deleteReserveContext.setReserveId(props.reserveId);
+        deleteReserveContext.setShow(true);
     }
 
     return( 
@@ -35,7 +36,7 @@ export function ReserveItem(props: ReserveitemProps) {
                 </div>
             </div>
             
-            <img src={trashIcon} alt="Excluir reserva" onClick={() => handleDeleteReserve()}/>
+            <img src={trashIcon} alt="Excluir reserva" onClick={() => openModalForDeletion()}/>
         </div>
     );
 }

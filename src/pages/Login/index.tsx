@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { ButtonSubmit } from '../../components/buttonSubmit';
 import { AlertModal } from '../../components/modal/alert';

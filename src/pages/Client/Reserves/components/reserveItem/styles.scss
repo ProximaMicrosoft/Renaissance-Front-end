@@ -1,3 +1,5 @@
+@import '../../../../../assets/scss/global.scss';
+
 .reserve-item {
     list-style: none;
     display: flex;
@@ -8,24 +10,29 @@
         display: flex;
         align-items: center;
 
-        img {
+        svg {
             margin-right: 5vw;
-            width: 10vw;
+            width: 12vw;
+            
+            path {
+                stroke: $colorFont
+            }
         }
 
         #info-text {
+            color: $colorFont;
             h3, h5 {
                 margin-bottom: 0;
             }
 
             h3 {
-                font-size: 6vw
+                font-size: 5vw
             }
 
             #data {
                 display: flex;
                 h5 {
-                    font-size: 5vw
+                    font-size: 4vw
                 }
 
                 h5+h5 {
@@ -36,6 +43,6 @@
     }
 
     img {
-        width: 10vw;
+        width: 7vw;
     }
 }
