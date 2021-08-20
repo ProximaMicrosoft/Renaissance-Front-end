@@ -82,7 +82,7 @@ export function Reserves() {
         
         for(let i = rules[PLACE_INDEX].inicialHour; i < rules[PLACE_INDEX].finalHour; i++) {
             aux.push(
-                <ListGroup.Item action as="text" href={`${i}`} onClick={() => setScheduleTarget(i)}>
+                <ListGroup.Item key={i} action as="text" href={`${i}`} onClick={() => setScheduleTarget(i)}>
                     {i}:00 - {i}:50
                 </ListGroup.Item>
             )
@@ -100,6 +100,7 @@ export function Reserves() {
                 for(let i = 0; i < RESERVES.length; i++) {
                     aux.push(
                         <ReserveItem 
+                            key={i}
                             reserveId={RESERVES[i].id} 
                             placeId={RESERVES[i].espacos_id} 
                             data={RESERVES[i].data} 
