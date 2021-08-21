@@ -57,7 +57,7 @@ export function MenuContent() {
                         </button>
                     </Link>
 
-                    <Link to="/rules">
+                    <Link to="/documents">
                         <button className="item-button" onClick={() => menuContext.setShow(false)}>
                             <div id="content-button">
                                 <h3>Documentos </h3>

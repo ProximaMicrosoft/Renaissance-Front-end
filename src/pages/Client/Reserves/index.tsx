@@ -10,7 +10,7 @@ import { useAuth } from '../../../hooks/useAuth';
 import {ReactComponent as CalendarIcon} from '../../../assets/icons/calendar_2.svg';
 import {ReactComponent as ClockIcon} from '../../../assets/icons/clock.svg';
 
-import { createReserve, getUserReserves } from '../../../services/reserves';
+import { createReserve, deleteReserve, getUserReserves } from '../../../services/reserves';
 
 import { structuringDate } from '../../../utils/date';
 
@@ -36,21 +36,14 @@ export function Reserves() {
     const [collapse, setCollapse] = useState("");
     const [loading, setLoading] = useState(false);
     const [confirmReserveModal, setConfirmReserveModal] = useState(false);
-    // const [excludedReserveModal, setExcludedReserveModal] = useState(false);
-
-    
-    useEffect(() => {
-        listingUserReserves(authContext.user.id);
-         // eslint-disable-next-line
-    }, [])
 
     useEffect(() => {
         placeTarget!== 0 && setScheduleList(listingSchedule(placeTarget));
     }, [placeTarget])
 
-    useEffect(() => {
-        
-    }, [])
+    // useEffect(() => {
+    //     listingUserReserves(authContext.user.id)
+    // }, [])
 
     function formatDate(date: number) {
         const dates = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
@@ -108,9 +101,9 @@ export function Reserves() {
                         />
                     )
                 }
+
+                setReservesList(aux);
             })
-    
-        setReservesList(aux);
     }
 
     
@@ -138,7 +131,7 @@ export function Reserves() {
                 <NavBar />
             </header>
  
-            <Tabs defaultActiveKey="do-reserve" id="uncontrolled-tab-example" className="mb-3">
+            <Tabs defaultActiveKey="do-reserve" id="uncontrolled-tab-example" className="mb-3" onSelect={(v) => (v==="my-reserves") && listingUserReserves(authContext.user.id)}>
                 <Tab eventKey="do-reserve" title="Fazer reserva" >
                     <div id="tab-content">
                         <form id="reserves-form" onSubmit={handleCreateReserve}>
@@ -229,7 +222,16 @@ export function Reserves() {
                     Não
                 </button>
 
-                <button className="btn-confirm yes" type="button" onClick={() => deleteReserveContext.handleDeleteReserve(deleteReserveContext.reserveId)}>
+                <button 
+                    className="btn-confirm yes" 
+                    type="button" 
+                    onClick={() => {
+                        deleteReserve(deleteReserveContext.reserveId).then(() => {
+                            deleteReserveContext.setShow(false);
+                            listingUserReserves(authContext.user.id);
+                        })
+                    }}
+                >
                     Sim
                 </button>
             </ConfirmModal>
