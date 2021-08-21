@@ -84,7 +84,7 @@ Utilize as credenciais a seguir para entrar como morador:
 - email: antonioguilhermeinfo@gmail.com
 - senha: ####56567687879
 
-Para utilizar a aplicação <a href="https://renaissance-theta.vercel.app/">clique aqui</a>
+Para utilizar a aplicação <a href="https://renaissance-iota.vercel.app/">clique aqui</a>
 <h5>OBS. Utilize o navegador Chrome ou Safari para poder utilizar como PWA</h5>
 
 ## 📝LICENSE
