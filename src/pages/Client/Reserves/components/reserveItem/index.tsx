@@ -31,7 +31,7 @@ export function ReserveItem(props: ReserveitemProps) {
                     <h3>{rules[PLACE_INDEX].nameLocal}</h3>
                     <div id="data">
                         <h5>{props.data},</h5>
-                        <h5>{`${props.schedule}:00 - ${props.schedule+1}:00`}h</h5>
+                        <h5>{`${props.schedule}:00 - ${props.schedule}:50`}h</h5>
                     </div>
                 </div>
             </div>

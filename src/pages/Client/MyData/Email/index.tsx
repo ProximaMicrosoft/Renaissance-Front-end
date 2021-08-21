@@ -1,17 +1,17 @@
 import { FormEvent, useState } from 'react';
 import {  Tabs, Tab } from 'react-bootstrap';
 
-import NavBar from '../../../components/navBar';
-import { Menu } from '../../../components/menu';
+import NavBar from '../../../../components/navBar';
+import { Menu } from '../../../../components/menu';
 
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../../hooks/useAuth';
 
-import email from '../../../assets/icons/email.svg';
+import email from '../../../../assets/icons/email.svg';
 
 import './styles.scss';
-import { AlertModal } from '../../../components/modal/alert';
-import { ButtonSubmit } from '../../../components/buttonSubmit';
-import { api } from '../../../services/_api';
+import { AlertModal } from '../../../../components/modal/alert';
+import { ButtonSubmit } from '../../../../components/buttonSubmit';
+import { api } from '../../../../services/_api';
 
 export function ChangeEmail() {  
     const authContext = useAuth();

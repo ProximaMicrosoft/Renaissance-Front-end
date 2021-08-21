@@ -30,7 +30,7 @@ export function Home() {
 
                 <ButtonNavigation img={reservesIcon} title="Reservas" path="/reserves"/>
 
-                <ButtonNavigation img={documentsIcon}title="Regras do condomínio" path="/rules"/>
+                <ButtonNavigation img={documentsIcon}title="Regras do condomínio" path="/documents"/>
             </main> 
  
             <Menu />
