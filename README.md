@@ -17,8 +17,6 @@ Projeto desenvolvido para a cliente Tamires, cuja nossa equipe, denominada <b>A 
     <li>Antônio Guilherme do Nascimento Pereira (Desenvolvedor Back-end/Coordenador de testes)</li>
 </ul> 
 
-A aplicação no geral seguirá o padrão REST, do contrário ao tipo MVC que estava sendo usada pelos moradores, o qual não estava tendo uma boa performance, além de pouco intuitivo por conta do design. 
-
 ## 💻 TECNOLOGIAS
 
 ### Protótipo
