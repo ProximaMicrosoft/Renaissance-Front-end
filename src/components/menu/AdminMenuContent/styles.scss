@@ -1,0 +1,68 @@
+@import '../../../assets/scss/global.scss';
+
+#offcanvasContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $colorPrimaryDark;
+    position: relative;
+    margin-left: auto;
+    width: 100%;
+    height: 100%;
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        top: -15vh;
+        height: 35%;
+
+        #profile {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    header, main, footer {
+        .item-button {
+            width: 100%;
+            height: 9vh;
+            padding: 3vw 5vw;
+            transition: background-color 200ms;
+            border: 0;
+            background-color: transparent;
+        
+            &:hover {
+                background-color: $colorPrimaryLight;
+            }
+        
+            #content-button {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                
+                h3 {
+                    margin: 0;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 400;
+                    font-size: 5vw;
+                    color: white;
+                }
+            
+                svg, img {
+                    width: 6vw;
+                    height: 6vw;
+                    margin-left: 10%;
+
+                    path {
+                        stroke: white;
+                    }
+                }
+
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { ButtonNavigation } from '../../../components/buttonNavigation';
 import NavBar from '../../../components/navBar';
-import { Menu } from '../../../components/menu';
+import { AdminMenu, Menu } from '../../../components/menu';
 
 import addUserIcon from '../../../assets/icons/add-user.svg';
 import reservesIcon from '../../../assets/icons/calendar-admin.svg';
@@ -27,7 +27,7 @@ export function AdminHome() {
                 <ButtonNavigation img={documentsIcon} title="Documentos oficiais" path="/documents"/>
             </main> 
  
-            <Menu />
+            <AdminMenu />
         </div>
     );
 }

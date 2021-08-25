@@ -1,0 +1,202 @@
+@import '../../../assets/scss/global.scss';
+
+#tab-content {
+    display: flex;
+    flex-direction: column;
+    
+    #select-space {
+        width: 100vw;
+        position: relative;
+        left: -5vw;
+        overflow-x: scroll;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        #list-space {
+            width: max-content;
+            display: flex;
+            flex-direction: row;
+            padding: 0 5vw;
+            
+
+            .space-button {
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: $colorButtonBackground;
+                width: 25vw;
+                height: 25vw;
+                color: $colorPrimaryDark;  
+                box-shadow: 0px 5px 6px -2px rgba(0,0,0,0.5);
+                border-radius: 4vw;
+                border: 0;
+                margin-bottom: 10px;
+            
+                svg {
+                    width: 50%;
+                    pointer-events: none;
+                }
+            
+                h3 {
+                    font-size: 4vw;
+                    font-weight: 400;
+                    word-wrap: break-word;
+                    pointer-events: none;
+                }
+            }
+            
+            .selected {
+                background-color: $colorPrimaryLight;
+                color: white;
+                
+                svg {
+                    path {
+                        stroke: white;
+                    }
+                }
+            }
+
+            .space-button + .space-button {
+                margin-left: 5vw;
+            }
+        }
+    }
+
+    .accordion {
+        .accordion-item {
+            border: 0;
+            outline: none;
+            background-color: transparent;
+            
+            .accordion-header {
+                svg {
+                    width: 8vw;
+
+                    path, line {
+                        stroke: $colorFont;
+                    }
+                }
+                
+                .accordion-button {
+                    display: flex;
+                    height: 15vw;
+                    align-items: center;
+                    background-color: transparent;
+                    box-shadow: none;
+                    padding: 0;
+
+                    svg {
+                        path, line, circle {
+                            stroke: $colorFont;
+                        }
+                    }
+                    
+                    &:not(.collapsed) {
+                        color: $colorFont;
+
+                        &::after {
+                            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+                        }
+
+                        svg {
+                            path {
+                                stroke: $colorFont;
+                            }
+                        }
+                    }
+                    
+                    p {
+                        margin: 0 0 0 5vw;
+                    }
+                }
+            }
+
+            .accordion-collapse {
+
+                .accordion-body {
+                    height: 60vh;
+                    overflow-y: scroll;
+                    padding: 0;
+                    
+
+                    .list-group {
+                        border-radius: 5vw;
+
+                        .list-group-item {
+                            border: 0;
+                        }
+                        
+                        .active {
+                            background-color: $colorPrimaryLight;
+                            border: 0;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+
+        .disabled {
+            .accordion-header {
+                .accordion-button {
+                    pointer-events: none;
+                    color: #D4D4D4;
+
+                    svg {
+                        path, line, circle {
+                            stroke: #D4D4D4;
+                        }
+                    }
+
+                    &::after {
+                        background-image: none
+                    }
+                }
+            }
+        }
+
+        .selected {
+            .accordion-header {
+                .accordion-button {
+                    color: $colorPrimaryLight;
+
+                    &::after {
+                        background-image: url('../../../assets/icons/collapse.svg')
+                    }
+
+                    svg {
+                        path, line, circle {
+                            stroke: $colorPrimaryLight;
+                        }
+                    }
+                    
+                    &:not(.collapsed) {
+                        color: $colorFont;
+                        
+                        &::after {
+                            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+                        }
+
+                        svg {
+                            path {
+                                stroke: $colorFont;
+                            }
+                        }
+                    }
+                    
+                    p {
+                        margin: 0 0 0 5vw;
+                    }
+                }
+            }
+        }
+    }
+
+    p {
+        font-size: 4.5vw;
+    }
+}
