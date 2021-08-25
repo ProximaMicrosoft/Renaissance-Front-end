@@ -8,7 +8,7 @@ import userIcon from '../../../assets/icons/user.svg';
 import './styles.scss';
 
 // import { AlertModal } from '../../../components/modal/alert';
-import { Menu } from '../../../components/menu';
+import { AdminMenu, Menu } from '../../../components/menu';
 // import { ConfirmModal } from '../../../components/modal/confirm';
 import { ButtonSubmit } from '../../../components/buttonSubmit';
 import { createUser, getGeneralUsers } from '../../../services/user';
@@ -35,15 +35,15 @@ export function AdminRegisterResident() {
                     <div className="user">
                         <img src={userIcon} alt={USERS[i].name} />
                         <div className="info-user">
-                            <h5>{USERS[i].name}</h5>
-                            <h5>Apt. {USERS[i].numeroapartamento}</h5>
+                            <h3>{USERS[i].name}</h3>
+                            <h5>Apt. {USERS[i].numeroapartamento}</h5> 
                         </div>
                     </div>
                 )
             }
-        })
 
-        setListUsers(aux);
+            setListUsers(aux);
+        })
     }
 
     function handleCreateUser(e: FormEvent) {
@@ -197,7 +197,7 @@ export function AdminRegisterResident() {
             </Tabs>
             
  
-            <Menu />
+            <AdminMenu />
         </div>
     );
 }

@@ -1,0 +1,42 @@
+@import '../../../assets/scss/global.scss';
+
+#tab-content {
+    display: flex;
+    flex-direction: column;
+    
+    .document-item {
+        display: flex;
+        justify-content: space-between;
+        .content {
+            display: flex;
+            align-items: center;
+
+            svg {
+                margin-right: 5vw;
+                width: 8vw;
+                height: 8vw;
+                
+                path {
+                    stroke: $colorFont
+                }
+            }
+
+            h5 {
+                margin-bottom: 0;
+            }
+        }
+
+        button {
+            background-color: transparent;
+            border: 0;
+
+            img {
+                width: 7vw;
+            }
+        }
+    }
+
+    .document-item + .document-item {
+        margin-top: 8vw;
+    }
+}

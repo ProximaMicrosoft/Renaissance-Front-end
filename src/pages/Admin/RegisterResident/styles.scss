@@ -114,6 +114,33 @@
 
         .listing {
             padding: 0;
+
+            .user {
+                display: flex;
+
+                img {
+                    margin-right: 5vw;
+                    width: 6vw;
+                }
+
+                .info-user {
+                    h3, h5 {
+                        margin-bottom: 0;
+                    }
+
+                    h3 {
+                        font-size: 5vw
+                    }
+
+                    h5 {
+                        font-size: 4vw;
+                    }
+                }
+            }
+
+            .user + .user {
+                margin-top: 4vw;
+            }
         }
     }
 }

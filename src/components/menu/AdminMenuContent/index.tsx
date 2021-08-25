@@ -5,15 +5,14 @@ import { useLogout } from '../../../hooks/useLogout';
 
 import HamburguerIcon from '../../../assets/icons/hamburguer.svg';
 import HomeIcon from '../../../assets/icons/home.svg';
-import {ReactComponent as UserIcon} from '../../../assets/icons/user.svg';
-import {ReactComponent as CalendarIcon} from '../../../assets/icons/calendar.svg';
-import {ReactComponent as DocumentsIcon} from '../../../assets/icons/documents.svg';
+import {ReactComponent as UserIcon} from '../../../assets/icons/add-user.svg';
+import {ReactComponent as CalendarIcon} from '../../../assets/icons/calendar-admin.svg';
+import {ReactComponent as DocumentsIcon} from '../../../assets/icons/documents-admin.svg';
 import outIcon from '../../../assets/icons/go-out.svg'
 
 import './styles.scss';
 
-
-export function MenuContent() {
+export function AdminMenuContent() {
     const menuContext = useMenu();
     const logoutContext = useLogout();
 
@@ -37,22 +36,22 @@ export function MenuContent() {
                     </button>
                     
                 </Link>
-
+ 
                 <div id="profile">
-                    <Link to="/mydata">
+                    <Link to="/reserves">
                         <button className="item-button" onClick={() => menuContext.setShow(false)}>
                             <div id="content-button">
-                                <h3>Meus dados</h3>
-                                <UserIcon/>
+                                <h3>Ver Reservas</h3>
+                                <CalendarIcon/>
                             </div>
                         </button>
                     </Link>
 
-                    <Link to="/reserves">
+                    <Link to="/register">
                         <button className="item-button" onClick={() => menuContext.setShow(false)}>
                             <div id="content-button">
-                                <h3>Reservas</h3>
-                                <CalendarIcon/>
+                                <h3>Cadastrar morador</h3>
+                                <UserIcon/>
                             </div>
                         </button>
                     </Link>
@@ -60,7 +59,7 @@ export function MenuContent() {
                     <Link to="/documents">
                         <button className="item-button" onClick={() => menuContext.setShow(false)}>
                             <div id="content-button">
-                                <h3>Documentos </h3>
+                                <h3>Documentos</h3>
                                 <DocumentsIcon/>
                             </div>
                         </button>
