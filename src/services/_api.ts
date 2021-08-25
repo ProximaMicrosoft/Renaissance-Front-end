@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: process.env.REACT_APP_API
+  baseURL: process.env.REACT_APP_API 
 })
 
-api.interceptors.request.use(async config => {
+api.interceptors.request.use(async config => { 
 
   const userData: string | null = localStorage.getItem('userData');
   if (userData != null) {
@@ -15,6 +15,6 @@ api.interceptors.request.use(async config => {
 });
 
 //api do meu localhost
-export const api2 = axios.create({
-  baseURL: process.env.REACT_APP_API_TESTE
-})
+// export const api2 = axios.create({
+//   baseURL: process.env.REACT_APP_API_TESTE
+// })

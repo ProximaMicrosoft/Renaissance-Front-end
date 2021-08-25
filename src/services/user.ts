@@ -3,7 +3,7 @@ import { api } from "./_api";
 
 interface LoginProps {
     resposta: string;
-    user: UserProps;
+    user: UserProps; 
 }
 
 export async function login(email: string, password: string) {
@@ -18,12 +18,14 @@ export async function sendLinkToResetPassword(email: string) {
     return
 }
 
-export async function createUser(name: string, email: string, password: string, numerotelefone: string, numeroapartamento: 70) {
+export async function createUser(name: string, email: string, password: string, numerotelefone: string, numeroapartamento: number, cpf: string, datanascimento:string) {
     return await api.post('/usuario', {
         name,
         email,
         password,
         numerotelefone,
+        cpf,
+        datanascimento,
         numeroapartamento,
         role: "USER"
     });
