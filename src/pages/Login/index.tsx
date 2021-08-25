@@ -40,7 +40,6 @@ export function Login() {
             history.push('/');
         }
 
-        
         // eslint-disable-next-line
     }, [])
 
