@@ -10,12 +10,13 @@ import logoIcon from '../../assets/icons/logo.svg';
 import eyeIcon from '../../assets/icons/eye.svg';
 import eyeClosedIcon from '../../assets/icons/eye-off.svg';
 
-import { login, sendLinkToResetPassword } from '../../services/user';
+import { login, redefinePassword, sendLinkToResetPassword } from '../../services/user';
 
 import { getStorage, saveStorage } from '../../utils/storage';
 
 import './styles.scss';
 import { InputModal } from '../../components/modal/input';
+import { api } from '../../services/_api';
 
 
 export function Login() {
@@ -64,9 +65,12 @@ export function Login() {
         e.preventDefault();
 
         sendLinkToResetPassword(email)
+            .then(() => {
+                setForgottenPasswordModalShow(false);
+                setLinkSent(true);
+            })
 
-        setForgottenPasswordModalShow(false);
-        setLinkSent(true);
+        
     }
 
     return(

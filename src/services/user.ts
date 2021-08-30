@@ -15,7 +15,15 @@ export async function login(email: string, password: string) {
 }
 
 export async function sendLinkToResetPassword(email: string) {
-    return
+    return await api.post('/enviaremailtoken', {
+        email
+    })
+}
+
+export async function redefinePassword(token: string, newPassword: string) {
+    return api.post(`/recuperaremailtoken/${token}`, {
+        senha: newPassword
+    })
 }
 
 export async function createUser(name: string, email: string, password: string, numerotelefone: string, numeroapartamento: number, cpf: string, datanascimento:string) {
