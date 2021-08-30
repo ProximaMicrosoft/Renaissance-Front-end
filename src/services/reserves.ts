@@ -9,12 +9,13 @@ type UserReservesProps = {
     espacos_id: number;
 }
 
-type GeneralReservesProps = {
+export type GeneralReservesProps = {
     id: number;
     data: string;
     horario: number;
     name: string;
     espacos_id: number;
+    numeroapartamento: number;
 }
 
 type IndisponibleReservesProps = {
@@ -29,8 +30,17 @@ export async function getUserReserves(user_Id: number): Promise<AxiosResponse<Us
     return await api.get(`/reservasjoin/${user_Id}`);
 }
 
-export async function getGeneralReserves(): Promise<AxiosResponse<GeneralReservesProps[]>> {
-    return await api.get('/reservas');
+export async function getGeneralReserves(id_espaco: number, dateTarget: string ): Promise<AxiosResponse<GeneralReservesProps[][]>> {
+    const date = dateTarget.split("/"); 
+    const dateTodayFormated = `${date[2]}-${date[1]}-${date[0]}`;
+    const inicialDate = `${dateTodayFormated} 00:00:00+00`;
+    const finalDate = `${dateTodayFormated} 23:00:00+00`;
+
+    return await api.post('/reservasadmin', {
+        data_inicial: inicialDate,
+        data_final: finalDate,
+        id_espaco: id_espaco
+    });
 }
 
 export async function getIndisponibleReserves(place_id: number): Promise<AxiosResponse<IndisponibleReservesProps[]>> {

@@ -3,6 +3,7 @@
 #tab-content {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
     
     #select-space {
         width: 100vw;
@@ -67,6 +68,7 @@
     }
 
     .accordion {
+        
         .accordion-item {
             border: 0;
             outline: none;
@@ -83,11 +85,11 @@
                 
                 .accordion-button {
                     display: flex;
-                    height: 15vw;
                     align-items: center;
                     background-color: transparent;
                     box-shadow: none;
                     padding: 0;
+                    margin: 5vw 0;
 
                     svg {
                         path, line, circle {
@@ -198,5 +200,50 @@
 
     p {
         font-size: 4.5vw;
+    }
+
+    .reserves-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 70%;
+        overflow-y: scroll;
+
+        .reserves {
+            display: flex;
+            margin-bottom: 4vw;
+            svg {
+                width: 8vw;
+                height: 6vw;
+                margin-right: 5vw;
+    
+                path, circle, line {
+                    stroke: $colorFont;
+                }
+            }
+    
+            .info-reserve {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                h3 {
+                    font-size: 6vw;
+                    font-weight: 600;
+                    color: $colorFont;
+                }
+
+                .info-user-reserve {
+                    margin: 1.5vw 0;
+
+                    h5 {
+                        line-height: 3vw;
+                        font-size: 5vw;
+                        color: $colorFont;
+                    }
+                }
+
+            }
+        }
     }
 }

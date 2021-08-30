@@ -9,12 +9,12 @@ import { InputModal } from '../../../components/modal/input';
 import { useAuth } from '../../../hooks/useAuth';
 
 import {ReactComponent as UserIcon} from '../../../assets/icons/user.svg';
-import condo from '../../../assets/icons/condo.svg';
-import cpf from '../../../assets/icons/cpf.svg';
-import born from '../../../assets/icons/calendar_profile.svg';
-import email from '../../../assets/icons/email.svg';
-import passwordIcon from '../../../assets/icons/password.svg';
-import phone from '../../../assets/icons/phone.svg';
+import {ReactComponent as CondoIcon} from '../../../assets/icons/condo.svg';
+import {ReactComponent as CpfIcon} from '../../../assets/icons/cpf.svg';
+import {ReactComponent as BornIcon} from '../../../assets/icons/calendar_profile.svg';
+import {ReactComponent as EmailIcon} from '../../../assets/icons/email.svg';
+import {ReactComponent as PasswordIcon} from '../../../assets/icons/password.svg';
+import {ReactComponent as PhoneIcon} from '../../../assets/icons/phone.svg';
 
 import './styles.scss';
 
@@ -33,7 +33,7 @@ export function MyData() {
             history.push('/change-email')
         }
     }
-
+ 
     return(
         <div id="container">
             <header className="header-functions">
@@ -50,35 +50,35 @@ export function MyData() {
                             </li>
 
                             <li>
-                                <img src={condo} alt="Condomínio" />
+                                <CondoIcon />
                                 <h3>Apt {authContext.user?.numeroapartamento}</h3>
                             </li>
 
                             <li>
-                                <img src={cpf} alt="CPF" />
-                                <h3>301.404.200-79</h3>
+                                <CpfIcon />
+                                <h3>{authContext.user.cpf}</h3>
                             </li>
 
                             <li>
-                                <img src={born} alt="Data de nascimento" />
-                                <h3>20/03/2000</h3>
+                                <BornIcon />
+                                <h3>{authContext.user.datanascimento}</h3>
                             </li>
                         </ul>
 
                         <ul className="editable-inputs">
                             <li onClick={() => setEmailModal(true)}>
-                                <img src={email} alt="E-mail" />
+                                <EmailIcon />
                                 <h3>{authContext.user?.email}</h3>
                             </li>
 
                             <li>
-                                <img src={passwordIcon} alt="Senha" />
+                                <PasswordIcon />
                                 <h3>**********</h3>
                             </li>
 
                             <li>
-                                <img src={phone} alt="Número de telefone" />
-                                <h3>(85) 98810-0510</h3>
+                                <PhoneIcon />
+                                <h3>{authContext.user.numerotelefone}</h3>
                             </li>
                         </ul>
                     </div>

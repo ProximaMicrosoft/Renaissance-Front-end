@@ -7,6 +7,8 @@ type UserProps = {
     name: string,
     email: string,
     password: string,
+    cpf: string,
+    datanascimento: string,
     token: string,
     numeroapartamento: number,
     numerotelefone: string,

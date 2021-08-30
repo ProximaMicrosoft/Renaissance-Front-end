@@ -1,17 +1,22 @@
 import { FormEvent, ReactNode, useState } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
+import { AdminMenu } from '../../../components/menu';
+import { ButtonSubmit } from '../../../components/buttonSubmit';
 import NavBar from '../../../components/navBar';
  
-import userIcon from '../../../assets/icons/user.svg';
+import {ReactComponent as UserIcon} from '../../../assets/icons/user.svg';
+import {ReactComponent as CondoIcon} from '../../../assets/icons/condo.svg';
+import {ReactComponent as CpfIcon} from '../../../assets/icons/cpf.svg';
+import {ReactComponent as BornIcon} from '../../../assets/icons/calendar_profile.svg';
+import {ReactComponent as EmailIcon} from '../../../assets/icons/email.svg';
+import {ReactComponent as PasswordIcon} from '../../../assets/icons/password.svg';
+import {ReactComponent as PhoneIcon} from '../../../assets/icons/phone.svg';
+
+
+import { createUser, getGeneralUsers } from '../../../services/user';
 
 import './styles.scss';
-
-// import { AlertModal } from '../../../components/modal/alert';
-import { AdminMenu, Menu } from '../../../components/menu';
-// import { ConfirmModal } from '../../../components/modal/confirm';
-import { ButtonSubmit } from '../../../components/buttonSubmit';
-import { createUser, getGeneralUsers } from '../../../services/user';
 
 export function AdminRegisterResident() {  
     const [name, setName] = useState('');
@@ -22,7 +27,7 @@ export function AdminRegisterResident() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [listUsers, setListUsers] = useState<ReactNode[]>()
+    const [listUsers, setListUsers] = useState<ReactNode[]>();
 
     function listingUsers() {
         let aux: ReactNode[] = [];
@@ -33,7 +38,7 @@ export function AdminRegisterResident() {
             for(let i = 0; i < USERS.length; i++) {
                 aux.push(
                     <div className="user">
-                        <img src={userIcon} alt={USERS[i].name} />
+                        <UserIcon />
                         <div className="info-user">
                             <h3>{USERS[i].name}</h3>
                             <h5>Apt. {USERS[i].numeroapartamento}</h5> 
@@ -77,7 +82,7 @@ export function AdminRegisterResident() {
                     <div id="tab-content">
                         <form onSubmit={handleCreateUser} autoComplete="off">
                             <fieldset>
-                                <img src={userIcon} alt="Nome" />
+                                <UserIcon />
                                 <input 
                                     type="text" 
                                     id="name"
@@ -90,7 +95,7 @@ export function AdminRegisterResident() {
                             </fieldset>
 
                             <fieldset>
-                                <img src={userIcon} alt="Apartamento" />
+                                <CondoIcon />
                                 <input 
                                     type="number" 
                                     id="name"
@@ -102,7 +107,7 @@ export function AdminRegisterResident() {
                             </fieldset>
 
                             <fieldset>
-                                <img src={userIcon} alt="Cpf" />
+                                <CpfIcon />
                                 <input 
                                     type="text" 
                                     id="cpf"
@@ -115,7 +120,7 @@ export function AdminRegisterResident() {
                             </fieldset>
 
                             <fieldset>
-                                <img src={userIcon} alt="Data de nascimento" />
+                                <BornIcon />
                                 <input 
                                     type="text" 
                                     id="born"
@@ -128,7 +133,7 @@ export function AdminRegisterResident() {
                             </fieldset>
 
                             <fieldset>
-                                <img src={userIcon} alt="Telefone" />
+                                <PhoneIcon />
                                 <input 
                                     type="text" 
                                     id="phone"
@@ -141,7 +146,7 @@ export function AdminRegisterResident() {
                             </fieldset>
 
                             <fieldset>
-                                <img src={userIcon} alt="Email" />
+                                <EmailIcon />
                                 <input 
                                     type="email" 
                                     id="email"
@@ -154,7 +159,7 @@ export function AdminRegisterResident() {
                             </fieldset>
 
                             <fieldset>
-                                <img src={userIcon} alt="senha" />
+                                <PasswordIcon />
                                 <input 
                                     type="password" 
                                     id="password"
@@ -167,7 +172,7 @@ export function AdminRegisterResident() {
                             </fieldset>
 
                             <fieldset>
-                                <img src={userIcon} alt="senha" />
+                                <PasswordIcon />
                                 <input 
                                     type="password" 
                                     id="password"
