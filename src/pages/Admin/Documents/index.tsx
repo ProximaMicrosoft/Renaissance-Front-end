@@ -1,10 +1,10 @@
 import {  Tabs, Tab } from 'react-bootstrap';
 
 import NavBar from '../../../components/navBar';
-import { AdminMenu, Menu } from '../../../components/menu';
+import { AdminMenu } from '../../../components/menu';
 
-import {ReactComponent as DocumentIcon} from '../../../assets/icons/documents.svg';
-import downloandIcon from '../../../assets/icons/downloand.svg';
+import {ReactComponent as DocumentIcon} from '../../../assets/icons/documents-admin.svg';
+import uploadIcon from '../../../assets/icons/upload.svg';
 
 import { api } from '../../../services/_api';
 
@@ -42,7 +42,7 @@ export function AdminDocuments() {
                             </div>
 
                             <button type="button" onClick={() => getDocuments()}>
-                                <img src={downloandIcon} alt="Baixar Regras do condomínio" />
+                                <img src={uploadIcon} alt="Baixar Regras do condomínio" />
                             </button>
                         </div>
                         
@@ -54,7 +54,7 @@ export function AdminDocuments() {
                             </div>
 
                             <button type="button" onClick={() => getDocuments()}>
-                                <img src={downloandIcon} alt="Baixar Regras do condomínio" />
+                                <img src={uploadIcon} alt="Baixar Regras do condomínio" />
                             </button>
                         </div>
 
@@ -66,7 +66,7 @@ export function AdminDocuments() {
                             </div>
 
                             <button type="button" onClick={() => getDocuments()}>
-                                <img src={downloandIcon} alt="Baixar Regras do condomínio" />
+                                <img src={uploadIcon} alt="Baixar Regras do condomínio" />
                             </button>
                         </div>
                     </div>

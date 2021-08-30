@@ -1,6 +1,6 @@
 import { ButtonNavigation } from '../../../components/buttonNavigation';
 import NavBar from '../../../components/navBar';
-import { AdminMenu, Menu } from '../../../components/menu';
+import { AdminMenu } from '../../../components/menu';
 
 import addUserIcon from '../../../assets/icons/add-user.svg';
 import reservesIcon from '../../../assets/icons/calendar-admin.svg';

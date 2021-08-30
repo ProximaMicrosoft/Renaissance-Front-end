@@ -72,9 +72,14 @@
             fieldset {
                 display: flex;
     
-                img {
+                svg {
                     width: 7vw;
+                    height: 7vw;
                     margin-right: 4vw;
+
+                    path {
+                        stroke: $colorPrimaryDark;
+                    }
                 }
 
                 input[type=number]::-webkit-inner-spin-button {
@@ -99,7 +104,7 @@
                     appearance: textfield;
 
                     &::placeholder {
-                        color: rgba(185, 185, 185, 0.527);
+                        color: $colorDisabledSecondary;
                     }
 
                     &:focus {
@@ -117,10 +122,12 @@
 
             .user {
                 display: flex;
+                align-items: center;
 
-                img {
+                svg {
                     margin-right: 5vw;
-                    width: 6vw;
+                    width: 7vw;
+                    height: 7vw;
                 }
 
                 .info-user {

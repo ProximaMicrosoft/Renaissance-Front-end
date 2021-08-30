@@ -1,27 +1,33 @@
 import {  Tabs, Tab, Accordion } from 'react-bootstrap';
 
 import NavBar from '../../../components/navBar';
-import { AdminMenu, Menu } from '../../../components/menu';
+import { AdminMenu } from '../../../components/menu';
 
-import {ReactComponent as DocumentIcon} from '../../../assets/icons/documents.svg';
 import {ReactComponent as CalendarIcon} from '../../../assets/icons/calendar_2.svg';
-import downloandIcon from '../../../assets/icons/downloand.svg';
+import {ReactComponent as ClockIcon} from '../../../assets/icons/clock.svg';
 
-import { api } from '../../../services/_api';
 import classnames from 'classnames';
 
 import './styles.scss';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { rules } from '../../../constants/places';
 import Calendar from 'react-calendar';
 import { structuringDate } from '../../../utils/date';
+import { getGeneralReserves } from '../../../services/reserves';
 
 export function AdminReserves() { 
     const dateToday = new Date();
 
     const [placeTarget, setPlaceTarget] = useState(0);
     const [dateTarget, setDateTarget] = useState('');
+    const [listReserves, setListReserves] = useState<ReactNode>()
     const [collapse, setCollapse] = useState("");
+
+    useEffect(() => {
+        (placeTarget!==0 && dateTarget !== '') && listingReserves()
+
+        // eslint-disable-next-line
+    }, [placeTarget, dateTarget])
 
     function formatDate(date: number) {
         const dates = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
@@ -46,6 +52,37 @@ export function AdminReserves() {
     
         return aux;
     }
+
+    function listingReserves() {
+        getGeneralReserves(placeTarget, dateTarget)
+            .then(response => {
+                const RESERVES = response.data;
+                let aux: ReactNode[] = [];
+
+                for(let i = 0; i < RESERVES.length; i++) {
+                    aux.push(
+                        <div className="reserves">
+                            <ClockIcon />
+    
+                            <div className="info-reserve">
+                                <h3>{RESERVES[i][0].horario}:00 - {RESERVES[i][0].horario}:50</h3>
+                                {RESERVES[i].map(userReserve => {
+                                    return (
+                                        <div className="info-user-reserve">
+                                            <h5>Ap {userReserve.numeroapartamento}</h5>
+                                            <h5>{userReserve.name}</h5>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    )
+                }
+    
+                setListReserves(aux);
+            })
+            .catch(() => alert('ocorreu um erro na requisição'))
+    }
     
     return(
         <div id="container">
@@ -61,8 +98,6 @@ export function AdminReserves() {
                                 {listingPlaceButtons()}
                             </ul>
                         </fieldset>
-                        
-                        <p hidden={!!placeTarget && true}>Antes de escolher a data da reserva, escolha o espaço desejado</p>
 
                         <Accordion activeKey={collapse}>
                             <Accordion.Item eventKey="0" bsPrefix={classnames(
@@ -85,6 +120,10 @@ export function AdminReserves() {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
+                    
+                        <div className="reserves-list">
+                            {listReserves} 
+                        </div>   
                     </div>
                 </Tab>
             </Tabs>
