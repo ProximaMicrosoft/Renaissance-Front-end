@@ -10,13 +10,12 @@ import logoIcon from '../../assets/icons/logo.svg';
 import eyeIcon from '../../assets/icons/eye.svg';
 import eyeClosedIcon from '../../assets/icons/eye-off.svg';
 
-import { login, redefinePassword, sendLinkToResetPassword } from '../../services/user';
+import { login, sendLinkToResetPassword } from '../../services/user';
 
 import { getStorage, saveStorage } from '../../utils/storage';
 
 import './styles.scss';
 import { InputModal } from '../../components/modal/input';
-import { api } from '../../services/_api';
 
 
 export function Login() {
@@ -33,11 +32,18 @@ export function Login() {
     const [registerModalShow, setRegisterModalShow] = useState(false);
     const [linkSent, setLinkSent] = useState(false);
 
+    //corrige quebra no layout quando teclado sobe
+    document.querySelector('input')?.addEventListener('focus', () => {
+        const layout: HTMLDivElement | null = document.querySelector('#container-login')
+        if(layout !== null) 
+            layout.style.height = `${window.screen.height}px`
+    })
+    
     // verifica se o usuário já estava logado
     useEffect(() => {
         if(getStorage("userData")) { 
             authContext.setUser(getStorage("userData"));
-            console.log(getStorage('userData'));
+            console.log(getStorage('userData')); 
             history.push('/');
         }
 
@@ -68,9 +74,9 @@ export function Login() {
             .then(() => {
                 setForgottenPasswordModalShow(false);
                 setLinkSent(true);
-            })
-
-        
+            }).catch(() => {
+                alert("O e-mail digitado não existe ou está incorreto.")
+            })        
     }
 
     return(
@@ -89,8 +95,10 @@ export function Login() {
                             name="email" 
                             id="email" 
                             placeholder="Email"
+                            inputMode="email"
                             value={email}
                             onChange={e => setEmail(e.currentTarget.value)}
+                            
                         />
                         
                         <div className={`password-field ${lightPasswordField ? 'light' : ''}`}>

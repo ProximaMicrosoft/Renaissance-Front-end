@@ -1,12 +1,12 @@
  @import '../../../assets/scss/global.scss';
 
 .modal {
+    
     .modal-dialog {
         @include centralizeContent();
 
         .modal-content {
             width: 85vw;
-            height: max-content;
             border-radius: 5vw;
 
             .modal-header {

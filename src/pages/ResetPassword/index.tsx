@@ -15,6 +15,10 @@ export function ResetPassword() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const layout: HTMLDivElement | null = document.querySelector('#container')
+    if(layout !== null) 
+        layout.style.height = `${window.screen.height}px`
+
     async function handleRedefinePassword(e: FormEvent) {
         e.preventDefault();
         const token = window.location.pathname.replace("/forgot-password/", "");

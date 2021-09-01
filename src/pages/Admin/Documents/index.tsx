@@ -1,30 +1,46 @@
-import {  Tabs, Tab } from 'react-bootstrap';
+import { useState } from 'react';
+import {  Tabs, Tab, Spinner } from 'react-bootstrap';
 
 import NavBar from '../../../components/navBar';
 import { AdminMenu } from '../../../components/menu';
 
 import {ReactComponent as DocumentIcon} from '../../../assets/icons/documents-admin.svg';
-import uploadIcon from '../../../assets/icons/upload.svg';
+import {ReactComponent as UploadIcon} from '../../../assets/icons/upload.svg';
 
 import { api } from '../../../services/_api';
 
 import './styles.scss';
 
 export function AdminDocuments() { 
-    async function getDocuments() {
-        api.get('/regras')
-            .then((res) => {
-                let blob = new Blob([res.data.arquivo], {
-                    type: 'application/pdf'
-                });
-                let url = window.URL.createObjectURL(blob)
-                window.open(url);
-            })
-            .catch(function(error) {
-                console.log(error)
-            });
-    }
+    const [docName, setDocName] = useState('');
+    const [file, setFile] = useState<any>();
+    const [isLoading, setIsLoading] = useState(false);
     
+    async function addDocuments() {
+        setIsLoading(true);
+        const formData = new FormData();
+        formData.append('arquivo', file);
+
+        api.post('/regras', formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }).then(() => {
+                setIsLoading(false);
+                alert('Arquivo enviado com sucesso');
+                
+            })
+            .catch(() => {
+                setIsLoading(false);
+                setDocName('');
+                alert('Não foi possivel realizar upload do arquivo');
+            });
+        
+        const inputFile: HTMLInputElement | null = document.querySelector("input")
+        if(inputFile !== null)
+            inputFile.value = '';
+    }
+
     return(
         <div id="container">
             <header className="header-functions">
@@ -38,12 +54,30 @@ export function AdminDocuments() {
                             <div className="content">
                                 <DocumentIcon />
 
-                                <h5>Regras do condomínio</h5>
+                                <div>
+                                    <h5>Regras do condomínio</h5>
+                                    <i>
+                                        <h5 className="docName">{docName.replace("C:\\fakepath\\", "")}</h5>
+                                        {isLoading && <Spinner animation="border" variant="success" />}
+                                    </i>
+                                </div>
                             </div>
 
-                            <button type="button" onClick={() => getDocuments()}>
-                                <img src={uploadIcon} alt="Baixar Regras do condomínio" />
-                            </button>
+                            <label htmlFor="rules" >
+                                <UploadIcon />
+                            </label>
+                            <input 
+                                hidden 
+                                type="file" 
+                                name="rules" 
+                                id="rules" 
+                                accept=".pdf" 
+                                onChange={(e) => {
+                                    setDocName(e.currentTarget.value)
+                                    e.currentTarget.files !== null && setFile(e.currentTarget.files[0]);
+                                    console.log(e.currentTarget.files)
+                                    addDocuments();
+                                }}/>
                         </div>
                         
                         <div className="document-item">
@@ -53,9 +87,10 @@ export function AdminDocuments() {
                                 <h5>Comunicado dd/mm</h5>
                             </div>
 
-                            <button type="button" onClick={() => getDocuments()}>
-                                <img src={uploadIcon} alt="Baixar Regras do condomínio" />
-                            </button>
+                            <label htmlFor="release">
+                                <UploadIcon />
+                            </label>
+                            <input hidden type="file" name="release" id="release"/>
                         </div>
 
                         <div className="document-item">
@@ -65,9 +100,10 @@ export function AdminDocuments() {
                                 <h5>Ata Reunião dd/mm</h5>
                             </div>
 
-                            <button type="button" onClick={() => getDocuments()}>
-                                <img src={uploadIcon} alt="Baixar Regras do condomínio" />
-                            </button>
+                            <label htmlFor="protocol">
+                                <UploadIcon />
+                            </label>
+                            <input hidden type="file" name="protocol" id="protocol"/>
                         </div>
                     </div>
                 </Tab>
