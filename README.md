@@ -90,7 +90,7 @@ Utilize as credenciais a seguir para entrar como administrador:
 - email: teste1@gmail.com
 - senha: ####56567687879
 
-Para fazer download do app <a href="https://drive.google.com/file/d/1dSUIYvQC-075C_mS_Djlv89JuG3vvy_u/view?usp=sharing">clique aqui</a>
+Para utilizar o app <a href="https://renaissance-iota.vercel.app">clique aqui</a>
 
 ## 📝LICENSE
 Este repositório está sob licenca [MIT LICENSE](LICENSE).<br><br>
