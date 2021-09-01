@@ -9,17 +9,23 @@ import downloandIcon from '../../../assets/icons/downloand.svg';
 import { api } from '../../../services/_api';
 
 import './styles.scss';
+import { useEffect, useState } from 'react';
 
 export function Documents() { 
-    async function getDocuments() {
-        api.get('/regras')
-            .then((res) => {
-                
-            })
-            .catch(function(error) {
-                console.log(error)
-            });
-    }
+    const [condoRules, setCondoRules] = useState('');
+
+    useEffect(() => {
+        async function getDocuments() {
+            api.get('/regras')
+                .then((res) => {
+                    setCondoRules(res.data[0].arquivo);
+                })
+                .catch(() => {
+                    alert('Não foi possível efetuar o download');
+                });
+        }
+        getDocuments();
+    }, [])
 
     return(
         <div id="container">
@@ -37,8 +43,8 @@ export function Documents() {
                                 <h5>Regras do condomínio</h5>
                             </div>
 
-                            <button type="button" onClick={() => getDocuments()}>
-                                <a href="https://backendprojeto.herokuapp.com/uploads/b03f022dd5a7-_regras_do_condominio.pdf" target="_self" download="Regras_do_condomínio.pdf">
+                            <button type="button">
+                                <a href={condoRules} target="_self" download>
                                     <img src={downloandIcon} alt="Baixar a do condomínio" />
                                 </a>
                             </button>
@@ -51,7 +57,7 @@ export function Documents() {
                                 <h5>Comunicado dd/mm</h5>
                             </div>
 
-                            <button type="button" onClick={() => getDocuments()}>
+                            <button type="button">
                                 <img src={downloandIcon} alt="Baixar Regras do condomínio" />
                             </button>
                         </div>
@@ -63,7 +69,7 @@ export function Documents() {
                                 <h5>Ata Reunião dd/mm</h5>
                             </div>
 
-                            <button type="button" onClick={() => getDocuments()}>
+                            <button type="button">
                                 <img src={downloandIcon} alt="Baixar Regras do condomínio" />
                             </button>
                         </div>
