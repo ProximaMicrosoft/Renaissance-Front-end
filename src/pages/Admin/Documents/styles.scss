@@ -7,7 +7,9 @@
     .document-item {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .content {
+            height: 5vh;
             display: flex;
             align-items: center;
 
@@ -21,9 +23,29 @@
                 }
             }
 
-            h5 {
-                margin-bottom: 0;
+            div {
+                h5 {
+                    margin-bottom: 0;
+                }
+
+                i {
+                    display: flex;
+                    .docName {
+                        font-size: 3vw;
+                        margin-right: 2vw;
+                    }
+
+                    .spinner-border {
+                        height: 3vw;
+                        width: 3vw;
+                        border: 2px solid $colorPrimaryDark;
+                        border-right-color: transparent;
+                    }
+                }
+                
             }
+
+            
         }
 
         button {

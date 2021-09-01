@@ -14,17 +14,13 @@ export function Documents() {
     async function getDocuments() {
         api.get('/regras')
             .then((res) => {
-                let blob = new Blob([res.data.arquivo], {
-                    type: 'application/pdf'
-                });
-                let url = window.URL.createObjectURL(blob)
-                window.open(url);
+                
             })
             .catch(function(error) {
                 console.log(error)
             });
     }
-    
+
     return(
         <div id="container">
             <header className="header-functions">
@@ -42,7 +38,9 @@ export function Documents() {
                             </div>
 
                             <button type="button" onClick={() => getDocuments()}>
-                                <img src={downloandIcon} alt="Baixar Regras do condomínio" />
+                                <a href="https://backendprojeto.herokuapp.com/uploads/b03f022dd5a7-_regras_do_condominio.pdf" target="_self" download="Regras_do_condomínio.pdf">
+                                    <img src={downloandIcon} alt="Baixar a do condomínio" />
+                                </a>
                             </button>
                         </div>
                         

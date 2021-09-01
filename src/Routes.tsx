@@ -28,7 +28,7 @@ export function Routes() {
                     </LogoutContextProvider>
                 </MenuContextProvider>
 
-                {/* <Route path="/" component={PageNotFound} /> */}
+                <Route path="/" component={PageNotFound} />
             </Switch>
         </BrowserRouter>
     );

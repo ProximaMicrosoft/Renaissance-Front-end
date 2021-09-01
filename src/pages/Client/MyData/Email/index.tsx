@@ -20,18 +20,19 @@ export function ChangeEmail() {
     const [newEmailRepeated, setNewEmailRepeated] = useState('');
     const [confirmationEmailModal, setConfirmationEmailModal] = useState(false)
 
-    async function validateEmail(e: FormEvent) {
+    async function resetEmail(e: FormEvent) {
         e.preventDefault();
 
         if(newEmail === newEmailRepeated){
             await api.put(`/usuario/${authContext.user.id}`, {
                 newEmail
             }).then(() => setConfirmationEmailModal(true))
+            .catch(() => alert('nao foi possivel alterar o email'))
         } 
     }
 
     return(
-        <div id="container">
+        <div id="container" className="container-email">
             <header className="header-functions">
                 <NavBar />
             </header>
@@ -39,7 +40,7 @@ export function ChangeEmail() {
             <Tabs defaultActiveKey="e-mail" id="uncontrolled-tab-example" className="mb-3">
                 <Tab eventKey="e-mail" title="Alterar e-mail" className=".nav-link active">
                     <div id="tab-content">
-                        <form onSubmit={validateEmail}>
+                        <form onSubmit={resetEmail}>
                             <div className="field-group">
                                 <fieldset>
                                     <img src={email} alt="E-mail" />

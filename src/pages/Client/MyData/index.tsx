@@ -17,13 +17,21 @@ import {ReactComponent as PasswordIcon} from '../../../assets/icons/password.svg
 import {ReactComponent as PhoneIcon} from '../../../assets/icons/phone.svg';
 
 import './styles.scss';
+import { api } from '../../../services/_api';
+import { sendLinkToResetPassword } from '../../../services/user';
+import { AlertModal } from '../../../components/modal/alert';
 
 
 export function MyData() {  
     const authContext = useAuth();
     const history = useHistory();
+    const [email, setEmail] = useState('');
     const [emailModal, setEmailModal] = useState(false);
     const [password, setPassword] = useState('');
+    const [phoneModal, setphoneModal] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [forgottenPasswordModalShow, setForgottenPasswordModalShow] = useState(false);
+    const [linkSent, setLinkSent] = useState(false);
 
     function confirmPasswordToChangeEmail(e: FormEvent) {
         e.preventDefault();
@@ -32,6 +40,35 @@ export function MyData() {
             setEmailModal(false);
             history.push('/change-email')
         }
+    }
+
+    async function resetPhone(e: FormEvent) {
+        e.preventDefault();
+
+        await api.put(`/usuario/${authContext.user.id}`, {
+            numerotelefone: phoneNumber
+        }).then(() => {
+            alert('Numero de telefone alterado com sucesso')
+            authContext.user.numerotelefone = phoneNumber;
+            setphoneModal(false)
+        })
+        .catch(() => {
+            alert('Nao foi possivel alterar o número de telefone')
+            setphoneModal(false);
+        })
+        
+    }
+
+    function handleForgottenPassword(e: FormEvent) {
+        e.preventDefault();
+
+        sendLinkToResetPassword(email)
+            .then(() => {
+                setForgottenPasswordModalShow(false);
+                setLinkSent(true);
+            }).catch(() => {
+                alert("O e-mail digitado não existe ou está incorreto.")
+            })        
     }
  
     return(
@@ -71,12 +108,12 @@ export function MyData() {
                                 <h3>{authContext.user?.email}</h3>
                             </li>
 
-                            <li>
+                            <li onClick={() => setForgottenPasswordModalShow(true)}>
                                 <PasswordIcon />
                                 <h3>**********</h3>
                             </li>
 
-                            <li>
+                            <li onClick={() => setphoneModal(true)}>
                                 <PhoneIcon />
                                 <h3>{authContext.user.numerotelefone}</h3>
                             </li>
@@ -106,6 +143,53 @@ export function MyData() {
                     <button type="submit">Confirmar senha</button>
                 </form>
             </InputModal>
+
+            <InputModal 
+                show={forgottenPasswordModalShow}
+                onHide={() => setForgottenPasswordModalShow(false)}
+                title="Recuperar senha"
+                description="Um link para recuperar sua senha será enviado para o seu e-mail de cadastro atual"
+            >
+                <form onSubmit={handleForgottenPassword}>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        value={email} 
+                        placeholder="E-mail de cadastro"
+                        onChange={e => setEmail(e.currentTarget.value)}
+                        />
+                    <button type="submit">Enviar e-mail</button>
+                </form>
+            </InputModal>
+
+            <InputModal 
+                show={phoneModal}
+                onHide={() => setphoneModal(false)}
+                title="Alterar telefone"
+                description="Digite seu novo número de telefone para altera-lo. Com DDD e o 9 na frente."
+            >
+                <form onSubmit={resetPhone}>
+                    <input 
+                        type="number" 
+                        name="phone" 
+                        id="phone" 
+                        value={phoneNumber}
+                        onChange={e => setPhoneNumber(e.currentTarget.value)}
+                        placeholder="Novo número"
+                        
+                        />
+                    <button type="submit">Confirmar número</button>
+                </form>
+            </InputModal>
+
+            <AlertModal 
+                isCheck={true}
+                show={linkSent}
+                onHide={() => setLinkSent(false)}
+                title="Link enviado"
+                description="Verifique seu e-mail para alterar sua senha atual"
+            />
         </div>
     );
 }

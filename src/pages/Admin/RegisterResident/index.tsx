@@ -29,6 +29,12 @@ export function AdminRegisterResident() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [listUsers, setListUsers] = useState<ReactNode[]>();
 
+    document.querySelector('input')?.addEventListener('focus', () => {
+        const layout: HTMLDivElement | null = document.querySelector('.container-register')
+        if(layout !== null) 
+            layout.style.height = `${window.screen.height}px`
+    })
+
     function listingUsers() {
         let aux: ReactNode[] = [];
 
@@ -64,7 +70,7 @@ export function AdminRegisterResident() {
     }
 
     return(
-        <div id="container">
+        <div className="container-register">
             <header>
                 <NavBar />
             </header>
