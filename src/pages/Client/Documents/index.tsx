@@ -27,6 +27,10 @@ export function Documents() {
         getDocuments();
     }, [])
 
+    function download(url: string) {
+        window.open(url)
+    }
+
     return(
         <div id="container">
             <header className="header-functions">
@@ -44,9 +48,10 @@ export function Documents() {
                             </div>
 
                             <button type="button">
-                                <a href={condoRules} target="_self" download>
-                                    <img src={downloandIcon} alt="Baixar a do condomínio" />
-                                </a>
+                                <img 
+                                    src={downloandIcon} 
+                                    alt="Baixar a do condomínio" 
+                                    onClick={() => download(condoRules)}/>
                             </button>
                         </div>
                         
