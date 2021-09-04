@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {  Tabs, Tab } from 'react-bootstrap';
 
@@ -32,6 +32,12 @@ export function MyData() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [forgottenPasswordModalShow, setForgottenPasswordModalShow] = useState(false);
     const [linkSent, setLinkSent] = useState(false);
+
+    useEffect(() => {
+        const layout: HTMLDivElement | null = document.querySelector('#container')
+        if(layout !== null) 
+            layout.style.height = `${window.screen.height}px`
+    }, []);
 
     function confirmPasswordToChangeEmail(e: FormEvent) {
         e.preventDefault();
