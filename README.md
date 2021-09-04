@@ -90,10 +90,6 @@ Utilize as credenciais a seguir para entrar como administrador:
 - email: teste1@gmail.com
 - senha: ####56567687879
 
-Ou, se preferir, como morador:
-- email: reinaldosn2016@gmail.com
-- senha: 12345678
-
 Para utilizar a aplicação <a href="https://renaissance-iota.vercel.app">clique aqui</a>
 
 <p>OBS: precisa habilitar a opção <b>manter-me conectado</b> para entrar, por enquanto :)</p>
