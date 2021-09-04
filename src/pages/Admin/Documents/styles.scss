@@ -24,25 +24,19 @@
             }
 
             div {
+                display: flex;
+                align-items: center;
                 h5 {
                     margin-bottom: 0;
+                    margin-right: 2vw;
                 }
 
-                i {
-                    display: flex;
-                    .docName {
-                        font-size: 3vw;
-                        margin-right: 2vw;
-                    }
-
-                    .spinner-border {
-                        height: 3vw;
-                        width: 3vw;
-                        border: 2px solid $colorPrimaryDark;
-                        border-right-color: transparent;
-                    }
+                .spinner-border {
+                    height: 3vw;
+                    width: 3vw;
+                    border: 2px solid $colorPrimaryDark;
+                    border-right-color: transparent;
                 }
-                
             }
 
             

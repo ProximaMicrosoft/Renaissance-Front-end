@@ -33,11 +33,11 @@ export function Login() {
     const [linkSent, setLinkSent] = useState(false);
 
     //corrige quebra no layout quando teclado sobe
-    document.querySelector('input')?.addEventListener('focus', () => {
+    useEffect(() => {
         const layout: HTMLDivElement | null = document.querySelector('#container-login')
         if(layout !== null) 
             layout.style.height = `${window.screen.height}px`
-    })
+    }, [])
     
     // verifica se o usuário já estava logado
     useEffect(() => {

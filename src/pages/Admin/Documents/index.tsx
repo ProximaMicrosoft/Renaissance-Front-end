@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {  Tabs, Tab, Spinner } from 'react-bootstrap';
 
 import NavBar from '../../../components/navBar';
@@ -7,38 +7,38 @@ import { AdminMenu } from '../../../components/menu';
 import {ReactComponent as DocumentIcon} from '../../../assets/icons/documents-admin.svg';
 import {ReactComponent as UploadIcon} from '../../../assets/icons/upload.svg';
 
-import { api } from '../../../services/_api';
+import { deleteDocument, getDocuments, GetDocumentsProps, uploadDocument } from '../../../services/documents';
 
 import './styles.scss';
 
-export function AdminDocuments() { 
-    const [docName, setDocName] = useState('');
-    const [file, setFile] = useState<any>();
-    const [isLoading, setIsLoading] = useState(false);
-    
-    async function addDocuments() {
-        setIsLoading(true);
-        const formData = new FormData();
-        formData.append('arquivo', file);
 
-        api.post('/regras', formData, {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        }).then(() => {
-                setIsLoading(false);
+export function AdminDocuments() { 
+
+    const [documents, setDocuments] = useState<GetDocumentsProps[]>([]);
+   
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        getDocuments().then(e => setDocuments(e.data))
+    }, [documents])
+
+    async function handleAddDocument(file: any) {
+        setIsLoading(true);
+
+        const formData = new FormData();
+
+        formData.append('arquivo', file);
+        
+        uploadDocument(formData)
+            .then(() => {
                 alert('Arquivo enviado com sucesso');
-                
+                documents.length > 0 && deleteDocument(documents[0].id);
+                setIsLoading(false);
             })
             .catch(() => {
+                alert('Ocorreu um erro ao enviar o arquivo');
                 setIsLoading(false);
-                setDocName('');
-                alert('Não foi possivel realizar upload do arquivo');
-            });
-        
-        const inputFile: HTMLInputElement | null = document.querySelector("input")
-        if(inputFile !== null)
-            inputFile.value = '';
+            })
     }
 
     return(
@@ -56,10 +56,7 @@ export function AdminDocuments() {
 
                                 <div>
                                     <h5>Regras do condomínio</h5>
-                                    <i>
-                                        <h5 className="docName">{docName.replace("C:\\fakepath\\", "")}</h5>
-                                        {isLoading && <Spinner animation="border" variant="success" />}
-                                    </i>
+                                    {isLoading && <Spinner animation="border" variant="success" />}
                                 </div>
                             </div>
 
@@ -73,37 +70,10 @@ export function AdminDocuments() {
                                 id="rules" 
                                 accept=".pdf" 
                                 onChange={(e) => {
-                                    setDocName(e.currentTarget.value)
-                                    e.currentTarget.files !== null && setFile(e.currentTarget.files[0]);
-                                    console.log(e.currentTarget.files)
-                                    addDocuments();
+                                    if(e.currentTarget.files !== null) {
+                                        handleAddDocument(e.currentTarget.files[0]);
+                                    }
                                 }}/>
-                        </div>
-                        
-                        <div className="document-item">
-                            <div className="content">
-                                <DocumentIcon />
-
-                                <h5>Comunicado dd/mm</h5>
-                            </div>
-
-                            <label htmlFor="release">
-                                <UploadIcon />
-                            </label>
-                            <input hidden type="file" name="release" id="release"/>
-                        </div>
-
-                        <div className="document-item">
-                            <div className="content">
-                                <DocumentIcon />
-
-                                <h5>Ata Reunião dd/mm</h5>
-                            </div>
-
-                            <label htmlFor="protocol">
-                                <UploadIcon />
-                            </label>
-                            <input hidden type="file" name="protocol" id="protocol"/>
                         </div>
                     </div>
                 </Tab>

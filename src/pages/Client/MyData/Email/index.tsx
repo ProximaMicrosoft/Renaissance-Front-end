@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import {  Tabs, Tab } from 'react-bootstrap';
 
 import NavBar from '../../../../components/navBar';
@@ -18,7 +18,13 @@ export function ChangeEmail() {
 
     const [newEmail, setNewEmail] = useState('')
     const [newEmailRepeated, setNewEmailRepeated] = useState('');
-    const [confirmationEmailModal, setConfirmationEmailModal] = useState(false)
+    const [confirmationEmailModal, setConfirmationEmailModal] = useState(false);
+
+    useEffect(() => {
+        const layout: HTMLDivElement | null = document.querySelector('#container')
+        if(layout !== null) 
+            layout.style.height = `${window.screen.height}px`
+    }, []);
 
     async function resetEmail(e: FormEvent) {
         e.preventDefault();

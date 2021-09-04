@@ -1,4 +1,4 @@
-import { FormEvent, ReactNode, useState } from 'react';
+import { FormEvent, ReactNode, useEffect, useState } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
 import { AdminMenu } from '../../../components/menu';
@@ -17,6 +17,7 @@ import {ReactComponent as PhoneIcon} from '../../../assets/icons/phone.svg';
 import { createUser, getGeneralUsers } from '../../../services/user';
 
 import './styles.scss';
+import { validateBorn, validateCpf, validatePhone } from '../../../utils/validation';
 
 export function AdminRegisterResident() {  
     const [name, setName] = useState('');
@@ -29,11 +30,15 @@ export function AdminRegisterResident() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [listUsers, setListUsers] = useState<ReactNode[]>();
 
-    document.querySelector('input')?.addEventListener('focus', () => {
+    useEffect(() => {
         const layout: HTMLDivElement | null = document.querySelector('.container-register')
-        if(layout !== null) 
-            layout.style.height = `${window.screen.height}px`
-    })
+        const tabContent: HTMLDivElement | null = document.querySelector('#tab-content')
+        if(layout !== null && tabContent !== null) {
+            layout.style.height = `${window.screen.height}px`;
+            tabContent.style.height = `${window.screen.height*0.82}px`;
+        }
+            
+    }, [])
 
     function listingUsers() {
         let aux: ReactNode[] = [];
@@ -104,6 +109,7 @@ export function AdminRegisterResident() {
                                 <CondoIcon />
                                 <input 
                                     type="number" 
+                                    inputMode="numeric"
                                     id="name"
                                     required
                                     autoComplete="off"
@@ -117,7 +123,8 @@ export function AdminRegisterResident() {
                                 <input 
                                     type="text" 
                                     id="cpf"
-                                    value={cpf}
+                                    inputMode="numeric"
+                                    value={validateCpf(cpf)}
                                     required
                                     autoComplete="off"
                                     onChange={e => setCpf(e.currentTarget.value)}
@@ -129,8 +136,9 @@ export function AdminRegisterResident() {
                                 <BornIcon />
                                 <input 
                                     type="text" 
+                                    inputMode="numeric"
                                     id="born"
-                                    value={born}
+                                    value={validateBorn(born)}
                                     required
                                     autoComplete="off"
                                     onChange={e => setBorn(e.currentTarget.value)}
@@ -142,8 +150,9 @@ export function AdminRegisterResident() {
                                 <PhoneIcon />
                                 <input 
                                     type="text" 
+                                    inputMode="tel"
                                     id="phone"
-                                    value={phone}
+                                    value={validatePhone(phone)}
                                     required
                                     autoComplete="off"
                                     onChange={e => setPhone(e.currentTarget.value)}
