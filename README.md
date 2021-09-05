@@ -90,7 +90,10 @@ Utilize as credenciais a seguir para entrar como administrador:
 - email: teste1@gmail.com
 - senha: ####56567687879
 
-Para utilizar a aplicação <a href="https://renaissance-iota.vercel.app">clique aqui</a>
+Ou se preferir entrar como morador utilize:
+- email: reinaldosn2016@gmail.com
+- senha: 12345678
+
+Para baixar o apk <a href="https://drive.google.com/file/d/11hmCnLAXYwSvpb2P4RUZZ9MjIy7MoLmg/view?usp=sharing">clique aqui</a>
 
 <p>OBS: precisa habilitar a opção <b>manter-me conectado</b> para entrar, por enquanto :)</p>
-<p>OBS²: acesse o link utilizando Chrome ou Safari no smartphone para poder instalar o PWA</p>
